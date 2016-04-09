@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class MainController : MonoBehaviour {
     public int lives;
 
+    public Text livesText;
     public Text scoreText;
     public Text restartText;
     public Text gameOverText;
@@ -14,6 +15,7 @@ public class MainController : MonoBehaviour {
     // Use this for initialization
     void Start () {
         score = 0;
+        UpdateLives();
         UpdateScore();
     }
 	
@@ -43,6 +45,11 @@ public class MainController : MonoBehaviour {
         scoreText.text = "Score: " + score;
     }
 
+    void UpdateLives()
+    {
+        scoreText.text = "Lives: " + lives;
+    }
+
     void ReloadCurrentScene()
     {
         // get the current scene name 
@@ -61,6 +68,7 @@ public class MainController : MonoBehaviour {
     public void Death()
     {
         lives--;
+        UpdateLives();
     }
 
 }

@@ -39,7 +39,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 394a12a457a10914ca5574463107be4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lives: 0
+  lives: 3
+  livesText: {fileID: 0}
   scoreText: {fileID: 0}
   restartText: {fileID: 0}
   gameOverText: {fileID: 0}

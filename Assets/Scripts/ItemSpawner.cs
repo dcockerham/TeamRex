@@ -53,16 +53,17 @@ public class ItemSpawner : MonoBehaviour {
         //Returns true if it was able to instantiate an object, otherwise false.
         float RandomWidth = 0;
         float RandomHeight = 0;
+        float adjustment = (float) 0.1;
 
         if (Random.value < 0.5f)
-            RandomWidth = Random.Range((border - width / 2), (- width / 2));
+            RandomWidth = Random.Range((- border - width / 2), (- adjustment - width / 2));
         else
-            RandomWidth = Random.Range((width / 2 ), (width / 2 + border));
+            RandomWidth = Random.Range((adjustment + width / 2 ), (width / 2 + border));
 
         if (Random.value < 0.5f)
-            RandomHeight = Random.Range((border - height / 2), (- height / 2));
+            RandomHeight = Random.Range((- border - height / 2), (-adjustment - height / 2));
         else
-            RandomHeight = Random.Range((height / 2), (height / 2 + border));
+            RandomHeight = Random.Range((adjustment + height / 2), (height / 2 + border));
 
         Vector2 itemToPut = new Vector2(RandomWidth, RandomHeight);
 
