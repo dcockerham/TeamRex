@@ -10,14 +10,17 @@ public class MainController : MonoBehaviour {
     public Text restartText;
     public Text gameOverText;
 
+    private int score;
     // Use this for initialization
     void Start () {
-
+        score = 0;
+        UpdateScore();
     }
 	
 	// Update is called once per frame
 	void Update () {
 
+        
         GameOver();
    
     }
@@ -35,12 +38,12 @@ public class MainController : MonoBehaviour {
         }
     }
 
-    public void Death()
+    void UpdateScore()
     {
-        lives--;
+        scoreText.text = "Score: " + score;
     }
 
-    private void ReloadCurrentScene()
+    void ReloadCurrentScene()
     {
         // get the current scene name 
         string sceneName = SceneManager.GetActiveScene().name;
@@ -49,5 +52,15 @@ public class MainController : MonoBehaviour {
         SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
     }
 
+    public void AddScore(int newScoreValue)
+    {
+        score += newScoreValue;
+        UpdateScore();
+    }
+
+    public void Death()
+    {
+        lives--;
+    }
 
 }
