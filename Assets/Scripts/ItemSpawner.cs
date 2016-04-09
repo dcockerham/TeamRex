@@ -8,10 +8,13 @@ public class ItemSpawner : MonoBehaviour {
     public int max;
     public float time;
     public float itemDistance;
+    public string tagObject;
     public float border;
     private float timer = 0f;
     private float width;
     private float height;
+    private GameObject[] currentObjects;
+
     // Use this for initialization
     void Start () {
         height = 2.0f * Camera.main.orthographicSize;
@@ -21,8 +24,9 @@ public class ItemSpawner : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         timer += Time.deltaTime;
+        currentObjects = GameObject.FindGameObjectsWithTag(tagObject);
 
-        if (timer > time)
+        if (timer > time && max > currentObjects.Length)
         {
             Vector2 itemToPut = new Vector2(Random.Range((border - width / 2), (width / 2 - border)), Random.Range((border - height / 2), (height / 2 - border)));
 
