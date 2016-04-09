@@ -47,7 +47,7 @@ public class MainController : MonoBehaviour {
 
     void UpdateLives()
     {
-        scoreText.text = "Lives: " + lives;
+        livesText.text = "Lives: " + lives;
     }
 
     void ReloadCurrentScene()
