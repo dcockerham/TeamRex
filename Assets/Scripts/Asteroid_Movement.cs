@@ -6,6 +6,8 @@ public class Asteroid_Movement : MonoBehaviour {
     float x;
     float y;
 
+    public float speed = 2.5f;
+
     int count = 200;
 
     public Vector3 Direction;
@@ -15,6 +17,9 @@ public class Asteroid_Movement : MonoBehaviour {
 
         Direction.x = Random.Range(-1f, 1f);
         Direction.y = Random.Range(-1f, 1f);
+
+        Direction.x *= speed;
+        Direction.y *= speed;
 
         transform.localScale -= new Vector3(3f, 3f, 0);
 
