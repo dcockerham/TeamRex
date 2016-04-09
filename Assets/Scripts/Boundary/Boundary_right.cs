@@ -2,6 +2,10 @@
 using System.Collections;
 
 public class Boundary_right : MonoBehaviour {
+    void Start()
+    {
+        transform.position = new Vector3(Camera.main.orthographicSize * Camera.main.aspect, 0f,0f);
+    }
 
     void OnTriggerEnter2D(Collider2D other)
     {
