@@ -9,31 +9,31 @@ public class Player_Controller : MonoBehaviour {
 	public GameObject projectile;
 	public Vector3 lastShootPos;
 	public bool useMouse = false;
+	public bool freeze = false;
 
 	// Use this for initialization
 	void Start () {
 		timer = timeToShoot;
 		lastShootPos = Vector3.up;
+		freeze = false;
 	}
 
 	// Update is called once per frame
 	void Update () {
 		// movement controls
-		if (Input.GetKey(KeyCode.W))
-		{
-			transform.position += Vector3.up * Time.deltaTime * movementSpeed;
-		}
-		if (Input.GetKey(KeyCode.A))
-		{
-			transform.position += Vector3.left * Time.deltaTime * movementSpeed;
-		}
-		if (Input.GetKey(KeyCode.S))
-		{
-			transform.position += Vector3.down * Time.deltaTime * movementSpeed;
-		}
-		if (Input.GetKey(KeyCode.D))
-		{
-			transform.position += Vector3.right * Time.deltaTime * movementSpeed;
+		if (!freeze) {
+			if (Input.GetKey (KeyCode.W)) {
+				transform.position += Vector3.up * Time.deltaTime * movementSpeed;
+			}
+			if (Input.GetKey (KeyCode.A)) {
+				transform.position += Vector3.left * Time.deltaTime * movementSpeed;
+			}
+			if (Input.GetKey (KeyCode.S)) {
+				transform.position += Vector3.down * Time.deltaTime * movementSpeed;
+			}
+			if (Input.GetKey (KeyCode.D)) {
+				transform.position += Vector3.right * Time.deltaTime * movementSpeed;
+			}
 		}
 
 		// get the target screen position
@@ -59,7 +59,9 @@ public class Player_Controller : MonoBehaviour {
 		transform.up = -direction;
 
 		// if it's time to shoot, shoot
-		timer -= Time.deltaTime;
+		if (!freeze) {
+			timer -= Time.deltaTime;
+		}
 		if (timer <= 0.0f) {
 			timer += timeToShoot;
 
@@ -68,5 +70,14 @@ public class Player_Controller : MonoBehaviour {
 			Rigidbody2D bulletRb = go.GetComponent<Rigidbody2D>();
 			bulletRb.AddForce(go.transform.up * 1000.0f);
 		}
+	}
+
+	public IEnumerator SetFreeze(float num)
+	{
+		freeze = true;
+		transform.GetChild (0).gameObject.SetActive (true);
+		yield return new WaitForSeconds (num);
+		freeze = false;
+		transform.GetChild (0).gameObject.SetActive (false);
 	}
 }
