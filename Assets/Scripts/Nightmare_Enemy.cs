@@ -35,7 +35,9 @@ public class Nightmare_Enemy : MonoBehaviour {
 	public IEnumerator SetFreezing(float num)
 	{
 		freezing = true;
+		transform.GetChild (0).gameObject.SetActive (true);
 		yield return new WaitForSeconds (num);
 		freezing = false;
+		transform.GetChild (0).gameObject.SetActive (false);
 	}
 }
