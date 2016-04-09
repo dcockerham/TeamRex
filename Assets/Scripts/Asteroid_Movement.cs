@@ -3,10 +3,8 @@ using System.Collections;
 
 public class Asteroid_Movement : MonoBehaviour {
 
-    float x;
-    float y;
-
     public float speed = 2.5f;
+	public float minSize = 4f;
 
     public Vector3 Direction;
 
@@ -19,9 +17,8 @@ public class Asteroid_Movement : MonoBehaviour {
         Direction.x *= speed;
         Direction.y *= speed;
 
-        transform.localScale -= new Vector3(3f, 3f, 0);
-
-        if (transform.localScale.x < 4)
+        /*transform.localScale -= new Vector3(3f, 3f, 0);*/
+        if (transform.localScale.x < minSize)
         {
             Destroy(this.gameObject);
         }
@@ -30,8 +27,12 @@ public class Asteroid_Movement : MonoBehaviour {
 
     void DestroyAsteroid()
     {
-        Instantiate(this.gameObject);
-        Instantiate(this.gameObject);
+		if (transform.localScale.x - 3f >= minSize) {
+			GameObject newAsteroid = Instantiate (this.gameObject);
+			newAsteroid.transform.localScale -= new Vector3 (3f, 3f, 0);
+			newAsteroid = Instantiate (this.gameObject);
+			newAsteroid.transform.localScale -= new Vector3 (3f, 3f, 0);
+		}
 
         Destroy(this.gameObject);
     }
