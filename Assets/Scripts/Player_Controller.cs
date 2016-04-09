@@ -98,6 +98,9 @@ public class Player_Controller : MonoBehaviour {
 			transform.up = -direction;
 
 			// if it's time to shoot, shoot
+			if (Powerups ["IncreaseFireRate"] == true && timer > 0.2f) {
+				timer = 0.2f;
+			}
 			timer -= Time.deltaTime;
 			if (timer <= 0.0f) {
 				if (Powerups["IncreaseFireRate"] == true){
