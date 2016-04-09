@@ -3,8 +3,11 @@ using System.Collections;
 
 public class Boundary : MonoBehaviour {
 
-    void OnTriggerExit(Collider other)
+    void OnTriggerExit2D(Collider2D other)
     {
-        
+        if (other.CompareTag("Bullet"))
+        {
+            Destroy(other.gameObject);
+        }
     }
 }
