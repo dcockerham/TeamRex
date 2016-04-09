@@ -8,8 +8,6 @@ public class Asteroid_Movement : MonoBehaviour {
 
     public float speed = 2.5f;
 
-    int count = 200;
-
     public Vector3 Direction;
 
 	// Use this for initialization
@@ -38,10 +36,11 @@ public class Asteroid_Movement : MonoBehaviour {
         Destroy(this.gameObject);
     }
 
-    void onCollisionEnter (Collision col) {
+    void OnTriggerEnter2D (Collider2D col) {
 
-        if (col.gameObject.tag == "bullet")
+        if (col.gameObject.tag == "Bullet")
         {
+            Destroy(col.gameObject);
             DestroyAsteroid();
         }
     }
@@ -50,12 +49,5 @@ public class Asteroid_Movement : MonoBehaviour {
 	void Update () {
 
         transform.Translate(Direction * Time.deltaTime);
-
-        count--;
-
-        if (count == 0)
-        {
-            DestroyAsteroid();
-        }
 	}
 }

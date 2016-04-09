@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 467846}
   - 114: {fileID: 11482548}
   - 212: {fileID: 21273790}
+  - 58: {fileID: 5814580}
   m_Layer: 0
   m_Name: Asteroid
   m_TagString: Untagged
@@ -29,6 +30,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!58 &5814580
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 198868}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.085
 --- !u!114 &11482548
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -40,6 +55,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3334da7714613443a50705d6f19d4b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 2.5
   Direction: {x: 0, y: 0, z: 0}
 --- !u!212 &21273790
 SpriteRenderer:
