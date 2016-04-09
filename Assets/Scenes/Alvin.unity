@@ -159,7 +159,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11457650, guid: 58da76859004f374ba8dacdf3200717b, type: 2}
       propertyPath: timeToShoot
-      value: 0.2
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 21251238, guid: 58da76859004f374ba8dacdf3200717b, type: 2}
       propertyPath: m_FlipY

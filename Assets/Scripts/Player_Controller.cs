@@ -111,6 +111,7 @@ public class Player_Controller : MonoBehaviour {
 		{
 			Powerups[col.gameObject.tag] = true;
 			PowerupTimes[col.gameObject.tag] = PowerupMaxTimes[col.gameObject.tag];
+            Destroy(col.gameObject);
 		}
 	}
 
