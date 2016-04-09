@@ -8,6 +8,7 @@ public class Player_Controller : MonoBehaviour {
 	public float timeToShoot = 0.5f;
 	private float timer;
 	public GameObject projectile;
+	public GameObject lockOn;
 	public Vector3 lastShootPos;
 	public bool useMouse = false;
 	public bool freeze = false;
@@ -22,6 +23,7 @@ public class Player_Controller : MonoBehaviour {
 		timer = timeToShoot;
 		lastShootPos = Vector3.up;
 		freeze = false;
+		lockOn = GameObject.Find("LockOn");
 
 		Powerups.Add("IncreaseFireRate", false);
 		PowerupMaxTimes.Add("IncreaseFireRate", 2.0f);
@@ -77,6 +79,7 @@ public class Player_Controller : MonoBehaviour {
 			}
 
 			// calculate the direction of the target position
+			lockOn.transform.position = lastShootPos;
 			Vector3 direction = lastShootPos;
 			direction.z = 0f;
 			direction = direction.normalized;

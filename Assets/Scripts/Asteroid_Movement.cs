@@ -5,6 +5,7 @@ public class Asteroid_Movement : MonoBehaviour {
 
     public float speed = 2.5f;
 	public float minSize = 4f;
+	public float sizeMod = 0.7f;
 
     public Vector3 Direction;
 
@@ -27,11 +28,12 @@ public class Asteroid_Movement : MonoBehaviour {
 
     void DestroyAsteroid()
     {
-		if (transform.localScale.x - 3f >= minSize) {
+		if (transform.localScale.x * sizeMod >= minSize) {
+			Vector3 newScale = new Vector3 (transform.localScale.x*sizeMod, transform.localScale.y*sizeMod, transform.localScale.z);
 			GameObject newAsteroid = Instantiate (this.gameObject);
-			newAsteroid.transform.localScale -= new Vector3 (3f, 3f, 0);
+			newAsteroid.transform.localScale = newScale;
 			newAsteroid = Instantiate (this.gameObject);
-			newAsteroid.transform.localScale -= new Vector3 (3f, 3f, 0);
+			newAsteroid.transform.localScale = newScale;
 		}
 
         Destroy(this.gameObject);
