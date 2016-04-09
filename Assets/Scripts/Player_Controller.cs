@@ -73,6 +73,11 @@ public class Player_Controller : MonoBehaviour {
 			}
 		}
 
+        if (Powerups["Invincibility"] == true)
+        {
+            
+        }
+
 		if (!freeze) {
 			// get the target screen position
 			if (!useMouse) {
@@ -126,10 +131,13 @@ public class Player_Controller : MonoBehaviour {
 
 	void OnTriggerEnter2D (Collider2D col)
 	{
-		if (col.gameObject.tag == "Asteroid")
-		{
-			Destroy(this.gameObject);
-		}
+        if (Powerups["Invincibility"] == false)
+        {
+            if (col.gameObject.tag == "Asteroid")
+            {
+                Destroy(this.gameObject);
+            }
+        }
 
 		if (Powerups.ContainsKey(col.gameObject.tag))
 		{
