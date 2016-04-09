@@ -126,11 +126,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11457650, guid: 58da76859004f374ba8dacdf3200717b, type: 2}
       propertyPath: timeToShoot
-      value: 1
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 11457650, guid: 58da76859004f374ba8dacdf3200717b, type: 2}
       propertyPath: useMouse
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11457650, guid: 58da76859004f374ba8dacdf3200717b, type: 2}
+      propertyPath: bulletForce
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 11457650, guid: 58da76859004f374ba8dacdf3200717b, type: 2}
+      propertyPath: freeze
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 58da76859004f374ba8dacdf3200717b, type: 2}

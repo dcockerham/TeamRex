@@ -11,6 +11,7 @@ public class Player_Controller : MonoBehaviour {
 	public Vector3 lastShootPos;
 	public bool useMouse = false;
 	public bool freeze = false;
+	public float bulletForce = 500.0f;
 
 	Dictionary<string, bool> Powerups = new Dictionary<string, bool>();
 	Dictionary<string, float> PowerupTimes = new Dictionary<string, float>();
@@ -94,7 +95,7 @@ public class Player_Controller : MonoBehaviour {
 				Quaternion q = Quaternion.FromToRotation (Vector3.up, direction);
 				GameObject go = (GameObject)Instantiate (projectile, transform.position, q);
 				Rigidbody2D bulletRb = go.GetComponent<Rigidbody2D> ();
-				bulletRb.AddForce (go.transform.up * 1000.0f);
+				bulletRb.AddForce (go.transform.up * bulletForce);
 			}
 		}
 	}
