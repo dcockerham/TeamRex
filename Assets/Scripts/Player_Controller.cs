@@ -70,17 +70,22 @@ public class Player_Controller : MonoBehaviour {
 					Vector2 screenSpace = lastGazePoint.Screen;
 					lastShootPos = Camera.main.ScreenToWorldPoint (new Vector3 (screenSpace.x, screenSpace.y, Camera.main.nearClipPlane));
 					lastShootPos.z = 0f;
+					lockOn.transform.position = lastShootPos;
+					lastShootPos = new Vector3 (screenSpace.x, screenSpace.y, 0f);
 				}
 			} else {
 				// if using the mouse, get the mouse position
 				Vector3 mouse_po = Input.mousePosition;
-				Vector3 obj = Camera.main.WorldToScreenPoint (transform.position);
-				lastShootPos = mouse_po - obj;
+				//Vector3 obj = Camera.main.WorldToScreenPoint (transform.position);
+				lastShootPos = Camera.main.ScreenToWorldPoint (new Vector3 (mouse_po.x, mouse_po.y, Camera.main.nearClipPlane));
+				lastShootPos.z = 0f;
+				lockOn.transform.position = lastShootPos;
+				lastShootPos = mouse_po;
 			}
 
 			// calculate the direction of the target position
-			lockOn.transform.position = lastShootPos;
-			Vector3 direction = lastShootPos;
+			//lockOn.transform.position = lastShootPos;
+			Vector3 direction = lastShootPos - Camera.main.WorldToScreenPoint (transform.position);
 			direction.z = 0f;
 			direction = direction.normalized;
 			transform.up = -direction;
