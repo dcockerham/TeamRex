@@ -13,6 +13,8 @@ public class Player_Controller : MonoBehaviour {
 	public bool useMouse = false;
 	public bool freeze = false;
 	public float bulletForce = 500.0f;
+    public Rigidbody2D rb;
+    public int force = 20;
 
 	Dictionary<string, bool> Powerups = new Dictionary<string, bool>();
 	Dictionary<string, float> PowerupTimes = new Dictionary<string, float>();
@@ -24,8 +26,9 @@ public class Player_Controller : MonoBehaviour {
 		lastShootPos = Vector3.up;
 		freeze = false;
 		lockOn = GameObject.Find("LockOn");
+        rb = GetComponent<Rigidbody2D>();
 
-		Powerups.Add("IncreaseFireRate", false);
+        Powerups.Add("IncreaseFireRate", false);
 		PowerupMaxTimes.Add("IncreaseFireRate", 2.0f);
 		PowerupTimes.Add("IncreaseFireRate", 0);
 	}
@@ -35,17 +38,21 @@ public class Player_Controller : MonoBehaviour {
 		// movement controls
 		if (!freeze) {
 			if (Input.GetKey (KeyCode.W)) {
-				transform.position += Vector3.up * Time.deltaTime * movementSpeed;
+                //transform.position += Vector3.up * Time.deltaTime * movementSpeed;
+                rb.AddForce(Vector3.up * force);
 			}
 			if (Input.GetKey (KeyCode.A)) {
-				transform.position += Vector3.left * Time.deltaTime * movementSpeed;
-			}
+                //transform.position += Vector3.left * Time.deltaTime * movementSpeed;
+                rb.AddForce(Vector3.left * force);
+            }
 			if (Input.GetKey (KeyCode.S)) {
-				transform.position += Vector3.down * Time.deltaTime * movementSpeed;
-			}
+                //transform.position += Vector3.down * Time.deltaTime * movementSpeed;
+                rb.AddForce(Vector3.down * force);
+            }
 			if (Input.GetKey (KeyCode.D)) {
-				transform.position += Vector3.right * Time.deltaTime * movementSpeed;
-			}
+                //transform.position += Vector3.right * Time.deltaTime * movementSpeed;
+                rb.AddForce(Vector3.right * force);
+            }
 		}
 
 		// power up handling
