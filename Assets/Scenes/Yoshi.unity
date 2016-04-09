@@ -170,6 +170,10 @@ Prefab:
       propertyPath: useMouse
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11457650, guid: 58da76859004f374ba8dacdf3200717b, type: 2}
+      propertyPath: force
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 58da76859004f374ba8dacdf3200717b, type: 2}
   m_IsPrefabParent: 0

@@ -14,7 +14,7 @@ public class Player_Controller : MonoBehaviour {
 	public bool freeze = false;
 	public float bulletForce = 500.0f;
     public Rigidbody2D rb;
-    public int force = 20;
+    public int force = 10;
 
 	Dictionary<string, bool> Powerups = new Dictionary<string, bool>();
 	Dictionary<string, float> PowerupTimes = new Dictionary<string, float>();
