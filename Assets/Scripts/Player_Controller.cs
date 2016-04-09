@@ -73,10 +73,13 @@ public class Player_Controller : MonoBehaviour {
 			}
 		}
 
-        if (Powerups["Invincibility"] == true)
-        {
-            
-        }
+		if (!Powerups["Invincibility"]) {
+			transform.GetChild (1).gameObject.SetActive (true);
+			transform.GetChild (2).gameObject.SetActive (false);
+		} else {
+			transform.GetChild (2).gameObject.SetActive (true);
+			transform.GetChild (1).gameObject.SetActive (false);
+		}
 
 		if (!freeze) {
 			// get the target screen position
