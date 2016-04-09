@@ -1,4 +1,0 @@
-sceneSetups:
-- path: Assets/Carl.unity
-  isLoaded: 1
-  isActive: 1
