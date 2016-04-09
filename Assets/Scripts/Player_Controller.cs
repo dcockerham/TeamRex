@@ -16,6 +16,7 @@ public class Player_Controller : MonoBehaviour {
     public Rigidbody2D rb;
     public int force = 10;
 
+
 	Dictionary<string, bool> Powerups = new Dictionary<string, bool>();
 	Dictionary<string, float> PowerupTimes = new Dictionary<string, float>();
 	Dictionary<string, float> PowerupMaxTimes = new Dictionary<string, float>();
@@ -29,8 +30,12 @@ public class Player_Controller : MonoBehaviour {
         rb = GetComponent<Rigidbody2D>();
 
         Powerups.Add("IncreaseFireRate", false);
-		PowerupMaxTimes.Add("IncreaseFireRate", 2.0f);
+		PowerupMaxTimes.Add("IncreaseFireRate", 10.0f);
 		PowerupTimes.Add("IncreaseFireRate", 0);
+
+        Powerups.Add("Invincibility", false);
+        PowerupMaxTimes.Add("Invincibility", 10.0f);
+        PowerupTimes.Add("Invincibility", 0);
 	}
 
 	// Update is called once per frame
