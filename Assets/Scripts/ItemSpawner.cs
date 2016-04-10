@@ -5,7 +5,7 @@ using Random = UnityEngine.Random;
 
 public class ItemSpawner : MonoBehaviour {
     public List<GameObject> itemlist = new List<GameObject>();
-    public int maxObjects = 10;
+    public int maxObjects = 18;
     public int initalObjects;
     public float time;
     public float itemDistance;
@@ -38,8 +38,7 @@ public class ItemSpawner : MonoBehaviour {
                 asteroidNumber += currentObjects[x].GetComponent<Asteroid_Movement>().size;
             }
 
-            Debug.Log(asteroidNumber);
-            if ((asteroidNumber + 4) <= 18)
+            if ((asteroidNumber + 4) <= maxObjects)
             {
                 if (InstantiateObject())
                 {
@@ -67,14 +66,17 @@ public class ItemSpawner : MonoBehaviour {
         float adjustment = (float) 0.1;
 
         if (Random.value < 0.5f)
-            RandomWidth = Random.Range((- border - width / 2), (- adjustment - width / 2));
+            RandomWidth = Random.Range((- border - (width / 2)), (- adjustment - (width / 2)));
         else
-            RandomWidth = Random.Range((adjustment + width / 2 ), (width / 2 + border));
+            RandomWidth = Random.Range(((adjustment + width) / 2 ), ((width / 2) + border));
 
         if (Random.value < 0.5f)
             RandomHeight = Random.Range((- border - height / 2), (-adjustment - height / 2));
         else
             RandomHeight = Random.Range((adjustment + height / 2), (height / 2 + border));
+
+        //Debug.Log(RandomWidth);
+        Debug.Log(RandomHeight);
 
         Vector2 itemToPut = new Vector2(RandomWidth, RandomHeight);
 
