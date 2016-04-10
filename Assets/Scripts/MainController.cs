@@ -33,11 +33,15 @@ public class MainController : MonoBehaviour {
             Destroy(player);
 
             gameOverText.text = "GameOver!";
-            restartText.text = "Press 'R' for Restart";
+            restartText.text = "Press 'R' for Restart\nPress 'Q' for Quit";
             if (Input.GetKeyDown(KeyCode.R))
             {
                 ReloadCurrentScene();
             }
+			else if (Input.GetKeyDown(KeyCode.Q))
+			{
+				Application.LoadLevel(0);
+			}
         }
     }
 
