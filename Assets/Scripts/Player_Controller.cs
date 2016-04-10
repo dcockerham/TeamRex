@@ -131,6 +131,8 @@ public class Player_Controller : MonoBehaviour {
 				GameObject go = (GameObject)Instantiate (projectile, transform.position, q);
 				Rigidbody2D bulletRb = go.GetComponent<Rigidbody2D> ();
 				bulletRb.AddForce (go.transform.up * bulletForce);
+				AudioSource audio = GetComponent<AudioSource>();
+				audio.Play();
 			}
 		}
 	}
@@ -177,6 +179,9 @@ public class Player_Controller : MonoBehaviour {
         transform.position = itemToPut;
         GetComponent<Rigidbody2D>().velocity = Vector3.zero;
         mainController.Death();
+
+		Powerups["Invincibility"] = true;
+		PowerupTimes["Invincibility"] = 3.0f;
     }
 
 }
