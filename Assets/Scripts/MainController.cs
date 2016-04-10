@@ -31,6 +31,9 @@ public class MainController : MonoBehaviour {
     {
         if (lives <= 0)
         {
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            Destroy(player);
+
             gameOverText.text = "GameOver!";
             restartText.text = "Press 'R' for Restart";
             if (Input.GetKeyDown(KeyCode.R))
