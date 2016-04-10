@@ -7,6 +7,8 @@ public class Player_Controller : MonoBehaviour {
 	public float movementSpeed = 5.0f;
 	public float timeToShoot = 0.5f;
 	private float timer;
+
+
 	public GameObject projectile;
 	public GameObject lockOn;
 	public Vector3 lastShootPos;
@@ -15,7 +17,7 @@ public class Player_Controller : MonoBehaviour {
 	public float bulletForce = 500.0f;
     public Rigidbody2D rb;
     public int force = 10;
-
+    public GameObject deathParticle;
     private MainController mainController;
 
     Dictionary<string, bool> Powerups = new Dictionary<string, bool>();
@@ -143,6 +145,7 @@ public class Player_Controller : MonoBehaviour {
             if (col.gameObject.tag == "Asteroid")
             {
                 mainController.Death();
+                Instantiate(deathParticle, transform.position, transform.rotation);
                 Vector2 itemToPut = new Vector2(100000, 100000);
                 transform.position = itemToPut;
                 StartCoroutine(waitFunction(3f));
