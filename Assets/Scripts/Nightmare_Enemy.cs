@@ -113,7 +113,8 @@ public class Nightmare_Enemy : MonoBehaviour {
 		transform.GetChild (2).gameObject.SetActive (false);
 		transform.GetChild (3).gameObject.SetActive (false);
 		transform.GetChild (4).gameObject.SetActive (false);
-		transform.GetChild (6).gameObject.SetActive (false);
+		GetComponent<SpriteRenderer> ().enabled = false;
+		//transform.GetChild (6).gameObject.SetActive (false);
 		transform.GetChild (5).gameObject.SetActive (true);
 		yield return new WaitForSeconds (num);
 		Destroy (gameObject);

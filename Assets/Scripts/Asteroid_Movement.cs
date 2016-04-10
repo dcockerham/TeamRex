@@ -11,6 +11,8 @@ public class Asteroid_Movement : MonoBehaviour {
 	public float rotateSpeed;
     public Vector3 Direction;
 
+	public GameObject breakSound;
+
     private MainController mainController;
 
     // Use this for initialization
@@ -40,10 +42,10 @@ public class Asteroid_Movement : MonoBehaviour {
             newAsteroid.GetComponent<Asteroid_Movement>().size = size - 1;
 			newAsteroid.transform.localScale = newScale;
 
-            
             mainController.ScoreAsteroid(transform.localScale.x);
         }
 
+		Instantiate (breakSound);
         Destroy(gameObject);
     }
 
