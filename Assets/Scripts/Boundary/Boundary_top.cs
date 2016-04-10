@@ -5,7 +5,7 @@ public class Boundary_top : MonoBehaviour
 {
     void Start()
     {
-        transform.position = new Vector3(0f, Camera.main.orthographicSize, 0f);
+        transform.position = new Vector3(0f, Camera.main.orthographicSize*1.2f, 0f);
     }
 
 
@@ -15,6 +15,10 @@ public class Boundary_top : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         other.gameObject.transform.position -= new Vector3(0f, (float)(2 * other.gameObject.transform.position.y - .5), 0f);
-        print(other.gameObject.tag);
+    }
+
+    void OnTriggerStay2D(Collider2D other)
+    {
+        other.gameObject.transform.position -= new Vector3(0f, (float)(2 * other.gameObject.transform.position.y - 1.5), 0f);
     }
 }

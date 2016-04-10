@@ -14,7 +14,7 @@ public class Nightmare_Enemy : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		player = GameObject.Find("Player").GetComponent<Player_Controller>();
+		//player = GameObject.Find("Player").GetComponent<Player_Controller>();
 		if (player == null) {
 			print ("NO PLAYER ARGH!");
 			return;
