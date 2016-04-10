@@ -14,6 +14,10 @@ public class Boundary_right : MonoBehaviour {
 
     void OnTriggerStay2D(Collider2D other)
     {
+        if (other.gameObject.CompareTag("Wall"))
+        {
+            return;
+        }
         other.gameObject.transform.position -= new Vector3((float)(2 * other.gameObject.transform.position.y - 1.5), 0f, 0f);
     }
 }

@@ -7,6 +7,8 @@ public class Player_Controller : MonoBehaviour {
 	public float movementSpeed = 5.0f;
 	public float timeToShoot = 0.5f;
 	private float timer;
+
+
 	public GameObject projectile;
 	public GameObject lockOn;
 	public Vector3 lastShootPos;
@@ -15,7 +17,7 @@ public class Player_Controller : MonoBehaviour {
 	public float bulletForce = 500.0f;
     public Rigidbody2D rb;
     public int force = 10;
-
+    public GameObject deathParticle;
     private MainController mainController;
 
     Dictionary<string, bool> Powerups = new Dictionary<string, bool>();
@@ -84,11 +86,6 @@ public class Player_Controller : MonoBehaviour {
 			transform.GetChild (2).gameObject.SetActive (true);
 			transform.GetChild (1).gameObject.SetActive (false);
 		}
-		if (!Powerups ["IncreaseFireRate"]) {
-			transform.GetChild (3).gameObject.SetActive (false);
-		} else {
-			transform.GetChild (3).gameObject.SetActive (true);
-		}
 
 		if (!freeze) {
 			// get the target screen position
@@ -136,8 +133,6 @@ public class Player_Controller : MonoBehaviour {
 				GameObject go = (GameObject)Instantiate (projectile, transform.position, q);
 				Rigidbody2D bulletRb = go.GetComponent<Rigidbody2D> ();
 				bulletRb.AddForce (go.transform.up * bulletForce);
-				AudioSource audio = GetComponent<AudioSource>();
-				audio.Play();
 			}
 		}
 	}
@@ -149,9 +144,11 @@ public class Player_Controller : MonoBehaviour {
         {
             if (col.gameObject.tag == "Asteroid")
             {
+                mainController.Death();
+                Instantiate(deathParticle, transform.position, transform.rotation);
+
                 Vector2 itemToPut = new Vector2(100000, 100000);
                 transform.position = itemToPut;
-
                 StartCoroutine(waitFunction(3f));
             }
         }
@@ -172,23 +169,15 @@ public class Player_Controller : MonoBehaviour {
 		freeze = false;
 		transform.GetChild (0).gameObject.SetActive (false);
 	}
-
     public IEnumerator waitFunction(float waitTime)
     {
-		freeze = true;
-		Powerups["Invincibility"] = false;
-		Powerups["IncreaseFireRate"] = false;
-		yield return new WaitForSeconds(waitTime);
-		freeze = false;
+        yield return new WaitForSeconds(waitTime);
 
         Vector2 itemToPut;
         itemToPut = new Vector2(0, 0);
         transform.position = itemToPut;
         GetComponent<Rigidbody2D>().velocity = Vector3.zero;
-        mainController.Death();
-
-		Powerups["Invincibility"] = true;
-		PowerupTimes["Invincibility"] = 3.0f;
+        
     }
 
 }
