@@ -43,7 +43,7 @@ MonoBehaviour:
   - {fileID: 198868, guid: 309778776e255f24686344e42d569354, type: 2}
   - {fileID: 142538, guid: b9eca0581428dc7418d6261bf6d7ff97, type: 2}
   - {fileID: 161792, guid: 9cf1d433fc45a1d49bb1a0b7fdae0ab1, type: 2}
-  maxObjects: 30
+  maxObjects: 20
   initalObjects: 3
   border: 1
   asteroidTime: 3
