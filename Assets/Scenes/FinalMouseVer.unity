@@ -126,11 +126,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11435606, guid: 3a406f6c641b4734aa5e4adec457fb28, type: 2}
       propertyPath: laserPowerUpPercentage
-      value: 15
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 11435606, guid: 3a406f6c641b4734aa5e4adec457fb28, type: 2}
       propertyPath: nightmarePercentage
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 11435606, guid: 3a406f6c641b4734aa5e4adec457fb28, type: 2}
+      propertyPath: fighterPercentage
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3a406f6c641b4734aa5e4adec457fb28, type: 2}
