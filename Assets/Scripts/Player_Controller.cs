@@ -146,6 +146,7 @@ public class Player_Controller : MonoBehaviour {
             {
                 mainController.Death();
                 Instantiate(deathParticle, transform.position, transform.rotation);
+
                 Vector2 itemToPut = new Vector2(100000, 100000);
                 transform.position = itemToPut;
                 StartCoroutine(waitFunction(3f));

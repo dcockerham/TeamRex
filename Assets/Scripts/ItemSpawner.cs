@@ -16,6 +16,7 @@ public class ItemSpawner : MonoBehaviour {
     private float width;
     private float height;
     private GameObject[] currentObjects;
+    private int asteroidNumber;
 
     // Use this for initialization
     void Start () {
@@ -29,11 +30,21 @@ public class ItemSpawner : MonoBehaviour {
         timer += Time.deltaTime;
         currentObjects = GameObject.FindGameObjectsWithTag(tagObject);
 
-        if (timer > time && maxObjects > currentObjects.Length)
+        if (timer > time)
         {
-            if (InstantiateObject())
+            asteroidNumber = 0;
+            for (int x = 0; x < currentObjects.Length; x++)
             {
-                timer = 0f;
+                asteroidNumber += currentObjects[x].GetComponent<Asteroid_Movement>().size;
+            }
+
+            Debug.Log(asteroidNumber);
+            if ((asteroidNumber + 4) <= 18)
+            {
+                if (InstantiateObject())
+                {
+                    timer = 0f;
+                }
             }
         }
     }
@@ -67,11 +78,11 @@ public class ItemSpawner : MonoBehaviour {
 
         Vector2 itemToPut = new Vector2(RandomWidth, RandomHeight);
 
-        if (!(Physics.CheckSphere(itemToPut, itemDistance)))
-        {
+        //if (!(Physics.CheckSphere(itemToPut, itemDistance)))
+        //{
             GameObject g = (GameObject)Instantiate(itemlist[Random.Range(0, itemlist.Count)], itemToPut, itemlist[0].transform.rotation);
             return true;
-        }
-        return false;
+        //}
+        //return false;
     }
 }
