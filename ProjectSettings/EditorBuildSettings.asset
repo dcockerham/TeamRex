@@ -31,3 +31,5 @@ EditorBuildSettings:
     path: Assets/Scenes/TitleScreen.unity
   - enabled: 1
     path: Assets/Scenes/Dylan.unity
+  - enabled: 1
+    path: Assets/Scenes/MouseMode.unity
