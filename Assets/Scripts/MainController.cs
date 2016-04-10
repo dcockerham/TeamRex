@@ -78,5 +78,12 @@ public class MainController : MonoBehaviour {
         AddScore((int) (baseScoreAsteroid * size));
     }
 
+    /*
+    public IEnumerator laserspawn(float time, GameObject gem)
+    {
+        yield return new WaitForSeconds(time);
+        gem.SetActive(true);
+    }
+    */
 
 }

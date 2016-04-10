@@ -31,7 +31,7 @@ public class Asteroid_Movement : MonoBehaviour {
 	
 	}
 
-    void DestroyAsteroid()
+    public void DestroyAsteroid()
     {
 		if (size > 1) {
 			Vector3 newScale = new Vector3 (transform.localScale.x*sizeMod, transform.localScale.y*sizeMod, transform.localScale.z);
