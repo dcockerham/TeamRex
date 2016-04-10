@@ -12,6 +12,7 @@ public class Asteroid_Movement : MonoBehaviour {
     public Vector3 Direction;
 
 	public GameObject breakSound;
+    public GameObject destroyParticle;
 
     private MainController mainController;
 
@@ -45,7 +46,9 @@ public class Asteroid_Movement : MonoBehaviour {
             mainController.ScoreAsteroid(transform.localScale.x);
         }
 
-		//Instantiate (breakSound);
+        Instantiate(destroyParticle, transform.position, transform.rotation);
+        //Instantiate (breakSound);
+
         Destroy(gameObject);
     }
 
