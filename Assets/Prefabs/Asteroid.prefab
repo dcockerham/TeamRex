@@ -78,7 +78,7 @@ MonoBehaviour:
   size: 4
   rotateSpeed: 0
   Direction: {x: 0, y: 0, z: 0}
-  breakSound: {fileID: 0}
+  breakSound: {fileID: 132282, guid: 7cf8046f5c0b00044bb9b14de45138ac, type: 2}
   destroyParticle: {fileID: 179350, guid: 033fcc1fe35ab6840abb2c675bd9ea46, type: 2}
 --- !u!212 &21273790
 SpriteRenderer:

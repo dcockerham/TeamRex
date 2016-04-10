@@ -12,7 +12,12 @@ public class Asteroid_Movement : MonoBehaviour {
     public Vector3 Direction;
 
 	public GameObject breakSound;
-    public GameObject destroyParticle;
+    public GameObject destroyParticle1;
+    public GameObject destroyParticle2;
+    public GameObject destroyParticle3;
+    public GameObject destroyParticle4;
+
+    protected GameObject destroyParticle;
 
     private MainController mainController;
 
@@ -28,8 +33,24 @@ public class Asteroid_Movement : MonoBehaviour {
 
         Direction.x *= speed;
         Direction.y *= speed;
-	
-	}
+
+
+        switch(size)
+        {
+            case 4:
+                destroyParticle = destroyParticle4;
+                break;
+            case 3:
+                destroyParticle = destroyParticle3;
+                break;
+            case 2:
+                destroyParticle = destroyParticle2;
+                break;
+            case 1:
+                destroyParticle = destroyParticle1;
+                break;
+        }
+    }
 
     public void DestroyAsteroid()
     {
@@ -44,7 +65,6 @@ public class Asteroid_Movement : MonoBehaviour {
             newAsteroid.transform.localScale = newScale;
 
         }
-
         Instantiate(destroyParticle, transform.position, transform.rotation);
         //Instantiate (breakSound);
         mainController.ScoreAsteroid(size);
