@@ -12,7 +12,8 @@ public class MainController : MonoBehaviour {
     public Text restartText;
     public Text gameOverText;
 
-    private int score;
+    public int score;
+
     // Use this for initialization
     void Start () {
         score = 0;

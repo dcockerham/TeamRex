@@ -7,26 +7,36 @@ public class ItemSpawner : MonoBehaviour {
     public List<GameObject> itemlist = new List<GameObject>();
     public int maxObjects = 18;
     public int initalObjects;
+    public float border;
+
     public float asteroidTime;
     public float fighterTime;
-    public float itemDistance;
-    public string tagObject = "Asteroid";
-    public float border;
+    public float fighterPercentage;
+    public int fighterScore;
+
+    public float nightmareTime;
+    public float nightmarePercentage;
+    public int nightmareScore;
 
     private float asteroidtimer = 0f;
     private float fightertimer = 0f;
+    private float nightmaretimer = 0f;
 
     private int asteroidNumber;
-    private float fighterNumber = 0f;
+
 
     private float width;
     private float height;
     private GameObject[] currentObjects;
+    private MainController mainController;
 
-    
+
 
     // Use this for initialization
     void Start () {
+        GameObject gameControllerObject = GameObject.FindGameObjectWithTag("GameController");
+        mainController = gameControllerObject.GetComponent<MainController>();
+
         height = 2.0f * Camera.main.orthographicSize;
         width = height * Camera.main.aspect;
         InstantiateMultipleObjects(initalObjects, 0);
@@ -36,17 +46,52 @@ public class ItemSpawner : MonoBehaviour {
 	void Update () {
         InstantiateAsteroid();
         InstantiateFighter();
+        InstantiateNightmare();
+
+    }
+
+    void InstantiateNightmare()
+    {
+        nightmaretimer += Time.deltaTime;
+        currentObjects = GameObject.FindGameObjectsWithTag("Nightmare");
 
 
+        if (nightmaretimer > nightmareTime)
+        {
+            if (Random.value < nightmarePercentage / 100)
+            {
+                if (mainController.score / nightmareScore > currentObjects.Length)
+                {
+                    if (InstantiateObject(2))
+                    {
+                        nightmaretimer = 0f;
+                    }
+                }
+            }
+        }
     }
 
     void InstantiateFighter()
     {
         fightertimer += Time.deltaTime;
+        currentObjects = GameObject.FindGameObjectsWithTag("Fighter");
 
-        //if (asteroidtimer > asteroidTime)
 
+        if (fightertimer > fighterTime)
+        {
+            if (Random.value < fighterPercentage / 100)
+            {
+                if (mainController.score / fighterScore > currentObjects.Length)
+                {
+                    if (InstantiateObject(1))
+                    {
+                        fightertimer = 0f;
+                    }
+                }
+            }
+        }
     }
+
 
     void InstantiateAsteroid()
     {
