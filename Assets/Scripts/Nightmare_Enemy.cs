@@ -6,6 +6,7 @@ public class Nightmare_Enemy : MonoBehaviour {
 
 	Player_Controller player;
 	public bool freezing = false;
+	public float freezeTime = 1.5f;
 
     public float speed = 2.5f;
     public Vector3 Direction;
@@ -59,22 +60,23 @@ public class Nightmare_Enemy : MonoBehaviour {
 
         transform.Translate(Direction * Time.deltaTime);
 
-        //player = GameObject.Find("Player").GetComponent<Player_Controller>();
         if (player == null) {
 			print ("NO PLAYER ARGH!");
 			return;
 		}
 
 		if (!freezing && GetComponent<GazeAwareComponent> ().HasGaze) {
-			player.StartCoroutine (player.SetFreeze (1.0f));
-			StartCoroutine (SetFreezing(1.0f));
+			player.StartCoroutine (player.SetFreeze (freezeTime));
+			StartCoroutine (SetFreezing(freezeTime));
+		}
+	}
 
-			//player.freeze = true;
-			//player.transform.GetChild (0).gameObject.SetActive (true);
-		} /*else {
-			player.freeze = false;
-			player.transform.GetChild (0).gameObject.SetActive (false);
-		}*/
+	void OnMouseOver()
+	{
+		if (!freezing && player.useMouse) {
+			player.StartCoroutine (player.SetFreeze (freezeTime));
+			StartCoroutine (SetFreezing(freezeTime));
+		}
 	}
 
 	public IEnumerator SetFreezing(float num)

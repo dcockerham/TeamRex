@@ -7,6 +7,8 @@ public class Player_Controller : MonoBehaviour {
 	public float movementSpeed = 5.0f;
 	public float timeToShoot = 0.5f;
 	private float timer;
+
+
 	public GameObject projectile;
 	public GameObject lockOn;
 	public Vector3 lastShootPos;
@@ -15,7 +17,7 @@ public class Player_Controller : MonoBehaviour {
 	public float bulletForce = 500.0f;
     public Rigidbody2D rb;
     public int force = 10;
-
+    public GameObject deathParticle;
     private MainController mainController;
 
     Dictionary<string, bool> Powerups = new Dictionary<string, bool>();
@@ -131,8 +133,6 @@ public class Player_Controller : MonoBehaviour {
 				GameObject go = (GameObject)Instantiate (projectile, transform.position, q);
 				Rigidbody2D bulletRb = go.GetComponent<Rigidbody2D> ();
 				bulletRb.AddForce (go.transform.up * bulletForce);
-				AudioSource audio = GetComponent<AudioSource>();
-				audio.Play();
 			}
 		}
 	}
@@ -144,10 +144,18 @@ public class Player_Controller : MonoBehaviour {
         {
             if (col.gameObject.tag == "Asteroid")
             {
-                Vector2 itemToPut = new Vector2(100000, 100000);
+                mainController.Death();
+                Instantiate(deathParticle, transform.position, transform.rotation);
+
+                GetComponent<Rigidbody2D>().isKinematic = true;
+                GetComponent<Collider2D>().enabled = false;
+
+                Vector2 itemToPut;
+                itemToPut = new Vector2(1000, 1000);
                 transform.position = itemToPut;
 
                 StartCoroutine(waitFunction(3f));
+
             }
         }
 
@@ -167,21 +175,17 @@ public class Player_Controller : MonoBehaviour {
 		freeze = false;
 		transform.GetChild (0).gameObject.SetActive (false);
 	}
-
     public IEnumerator waitFunction(float waitTime)
     {
-		freeze = true;
-		yield return new WaitForSeconds(waitTime);
-		freeze = false;
+        yield return new WaitForSeconds(waitTime);
 
         Vector2 itemToPut;
         itemToPut = new Vector2(0, 0);
         transform.position = itemToPut;
         GetComponent<Rigidbody2D>().velocity = Vector3.zero;
-        mainController.Death();
+        GetComponent<Rigidbody2D>().isKinematic = false;
+        GetComponent<Collider2D>().enabled = true;
 
-		Powerups["Invincibility"] = true;
-		PowerupTimes["Invincibility"] = 3.0f;
     }
 
 }

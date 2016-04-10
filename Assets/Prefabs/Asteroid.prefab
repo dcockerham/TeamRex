@@ -57,7 +57,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2.5
   sizeMod: 0.6
-  size: 6
+  size: 4
   Direction: {x: 0, y: 0, z: 0}
 --- !u!212 &21273790
 SpriteRenderer:

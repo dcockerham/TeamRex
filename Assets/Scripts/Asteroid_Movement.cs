@@ -7,6 +7,8 @@ public class Asteroid_Movement : MonoBehaviour {
 	public float sizeMod = 0.6f;
     public int size;
 
+	private Quaternion baseRot;
+	public float rotateSpeed;
     public Vector3 Direction;
 
     private MainController mainController;
@@ -15,9 +17,11 @@ public class Asteroid_Movement : MonoBehaviour {
     void Start () {
         GameObject gameControllerObject = GameObject.FindGameObjectWithTag("GameController");
         mainController = gameControllerObject.GetComponent<MainController>();
+		baseRot = transform.rotation;
 
         Direction.x = Random.Range(-1f, 1f);
         Direction.y = Random.Range(-1f, 1f);
+		rotateSpeed = Random.Range (0f, 1f);
 
         Direction.x *= speed;
         Direction.y *= speed;
@@ -26,7 +30,7 @@ public class Asteroid_Movement : MonoBehaviour {
 
     void DestroyAsteroid()
     {
-		if (size > 3) {
+		if (size > 1) {
 			Vector3 newScale = new Vector3 (transform.localScale.x*sizeMod, transform.localScale.y*sizeMod, transform.localScale.z);
 			GameObject newAsteroid = Instantiate (this.gameObject);
 			newAsteroid.transform.localScale = newScale;
@@ -54,7 +58,10 @@ public class Asteroid_Movement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-        transform.Translate(Direction * Time.deltaTime);
+		Quaternion tempRot = transform.rotation;
+		transform.rotation = baseRot;
+		transform.Translate(Direction * Time.deltaTime);
+		transform.rotation = tempRot;
+		transform.Rotate (0,0,100*rotateSpeed*Time.deltaTime);
 	}
 }
