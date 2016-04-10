@@ -15,10 +15,9 @@ public class Boundary_top : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Wall"))
+        if (other.gameObject.CompareTag("Asteroid"))
         {
-            return;
+            other.gameObject.transform.position -= new Vector3(0f, (float)(2 * other.gameObject.transform.position.y - 1.5), 0f);
         }
-        other.gameObject.transform.position -= new Vector3(0f, (float)(2 * other.gameObject.transform.position.y - 1.5), 0f);
     }
 }
