@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Fighter_Enemy : MonoBehaviour {
 
 	private Player_Controller player;
 	private Rigidbody2D rigid;
 	public float speed = 1f;
+    public List<GameObject> Powerups = new List<GameObject>();
 
 	// Use this for initialization
 	void Start () {
@@ -30,6 +32,25 @@ public class Fighter_Enemy : MonoBehaviour {
 
 		if (col.gameObject.tag == "Bullet")
 		{
+            float spawn_chance = Random.Range(-1f, 1f);
+            if (spawn_chance > 0)
+            {
+                spawn_chance = Random.Range(-1f, 1f);
+
+                int Powerup_spawn;
+                if (spawn_chance < 0)
+                {
+                    Powerup_spawn = 0;
+                }
+                else
+                {
+                    Powerup_spawn = 1;
+                }
+
+                Instantiate(Powerups[Powerup_spawn].gameObject, transform.position, Quaternion.identity);
+
+            }
+
 			Destroy(col.gameObject);
 			Destroy(gameObject);
 		}

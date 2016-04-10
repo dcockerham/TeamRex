@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 486856}
   - 212: {fileID: 21235240}
   - 58: {fileID: 5854310}
+  - 114: {fileID: 11468702}
   m_Layer: 0
   m_Name: FireRatePowerup
   m_TagString: IncreaseFireRate
@@ -43,6 +44,20 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.24
+--- !u!114 &11468702
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 128648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccfa1a38c67fb9f428b3fb6b3dc36ed6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2.5
+  Direction: {x: 0, y: 0, z: 0}
+  time: 10
 --- !u!212 &21235240
 SpriteRenderer:
   m_ObjectHideFlags: 1
