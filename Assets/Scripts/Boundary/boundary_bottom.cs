@@ -2,22 +2,24 @@
 using System.Collections;
 
 public class boundary_bottom : MonoBehaviour {
+    private float width;
+    private float height;
+    public float border;
+
     void Start()
     {
-        transform.position = new Vector3(0f, -Camera.main.orthographicSize*1.2f, 0f);
+        height = 2.0f * Camera.main.orthographicSize;
+        width = height * Camera.main.aspect;
+        transform.position = new Vector3(0f, - border - height / 2, 0f);
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        other.gameObject.transform.position -= new Vector3(0f, (float)(2 * other.gameObject.transform.position.y + .5), 0f);
+        other.gameObject.transform.position = new Vector3(other.gameObject.transform.position.x, 1+ height/2, other.gameObject.transform.position.z);
     }
 
     void OnTriggerStay2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Wall"))
-        {
-            return;
-        }
-        other.gameObject.transform.position -= new Vector3(0f, (float)(2 * other.gameObject.transform.position.y + 1.5), 0f);
+        other.gameObject.transform.position = new Vector3(other.gameObject.transform.position.x, 1+ height/2, other.gameObject.transform.position.z);
     }
 }
