@@ -9,8 +9,12 @@ public class Asteroid_Movement : MonoBehaviour {
 
     public Vector3 Direction;
 
-	// Use this for initialization
-	void Start () {
+    private MainController mainController;
+
+    // Use this for initialization
+    void Start () {
+        GameObject gameControllerObject = GameObject.FindGameObjectWithTag("GameController");
+        mainController = gameControllerObject.GetComponent<MainController>();
 
         Direction.x = Random.Range(-1f, 1f);
         Direction.y = Random.Range(-1f, 1f);
@@ -34,7 +38,10 @@ public class Asteroid_Movement : MonoBehaviour {
 			newAsteroid.transform.localScale = newScale;
 			newAsteroid = Instantiate (this.gameObject);
 			newAsteroid.transform.localScale = newScale;
-		}
+
+            
+            mainController.ScoreAsteroid(transform.localScale.x);
+        }
 
         Destroy(this.gameObject);
     }

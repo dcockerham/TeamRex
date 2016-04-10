@@ -142,13 +142,10 @@ public class Player_Controller : MonoBehaviour {
         {
             if (col.gameObject.tag == "Asteroid")
             {
+                mainController.Death();
                 Vector2 itemToPut = new Vector2(100000, 100000);
                 transform.position = itemToPut;
-
-
                 StartCoroutine(waitFunction(3f));
-
-          
             }
         }
 
@@ -176,7 +173,7 @@ public class Player_Controller : MonoBehaviour {
         itemToPut = new Vector2(0, 0);
         transform.position = itemToPut;
         GetComponent<Rigidbody2D>().velocity = Vector3.zero;
-        mainController.Death();
+        
     }
 
 }
