@@ -9,6 +9,8 @@ TagManager:
   - IncreaseFireRate
   - Invincibility
   - Wall
+  - Fighter
+  - Nightmare
   - Enemy
   layers:
   - Default

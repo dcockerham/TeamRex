@@ -36,11 +36,11 @@ public class Player_Controller : MonoBehaviour {
         rb = GetComponent<Rigidbody2D>();
 
         Powerups.Add("IncreaseFireRate", false);
-		PowerupMaxTimes.Add("IncreaseFireRate", 10.0f);
+		PowerupMaxTimes.Add("IncreaseFireRate", 7.0f);
 		PowerupTimes.Add("IncreaseFireRate", 0);
 
         Powerups.Add("Invincibility", false);
-        PowerupMaxTimes.Add("Invincibility", 10.0f);
+        PowerupMaxTimes.Add("Invincibility", 7.0f);
         PowerupTimes.Add("Invincibility", 0);
 	}
 
@@ -152,7 +152,7 @@ public class Player_Controller : MonoBehaviour {
 	{
         if (Powerups["Invincibility"] == false)
         {
-			if (col.gameObject.tag == "Asteroid" || col.gameObject.tag == "Enemy")
+			if (col.gameObject.tag == "Asteroid" || col.gameObject.tag == "Fighter" || col.gameObject.tag == "Nightmare")
             {
                 mainController.Death();
                 Instantiate(deathParticle, transform.position, transform.rotation);
