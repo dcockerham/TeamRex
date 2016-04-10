@@ -131,6 +131,9 @@ public class Player_Controller : MonoBehaviour {
 				GameObject go = (GameObject)Instantiate (projectile, transform.position, q);
 				Rigidbody2D bulletRb = go.GetComponent<Rigidbody2D> ();
 				bulletRb.AddForce (go.transform.up * bulletForce);
+
+				AudioSource audio = GetComponent<AudioSource>();
+				audio.Play();
 			}
 		}
 	}
@@ -168,7 +171,8 @@ public class Player_Controller : MonoBehaviour {
 
     public IEnumerator waitFunction(float waitTime)
     {
-        yield return new WaitForSeconds(waitTime);
+		freeze = true;
+		yield return new WaitForSeconds(waitTime);
 
         Vector2 itemToPut;
         itemToPut = new Vector2(0, 0);
@@ -178,6 +182,7 @@ public class Player_Controller : MonoBehaviour {
 
 		Powerups["Invincibility"] = true;
 		PowerupTimes["Invincibility"] = 3.0f;
+		freeze = false;
     }
 
 }
