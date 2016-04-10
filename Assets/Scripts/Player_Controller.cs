@@ -165,6 +165,7 @@ public class Player_Controller : MonoBehaviour {
                 itemToPut = new Vector2(1000, 1000);
                 transform.position = itemToPut;
 
+				StopAllCoroutines ();
                 StartCoroutine(waitFunction(3f));
             }
         }
@@ -190,6 +191,7 @@ public class Player_Controller : MonoBehaviour {
 	{
 		Powerups["Invincibility"] = false;
 		Powerups["IncreaseFireRate"] = false;
+		transform.GetChild (0).gameObject.SetActive (false);
 		freeze = true;
 		yield return new WaitForSeconds(waitTime);
 		freeze = false;
