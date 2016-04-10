@@ -261,6 +261,8 @@ MonoBehaviour:
   Powerups:
   - {fileID: 128648, guid: d98346f538147824bb6dd53d3e056bb0, type: 2}
   - {fileID: 104766, guid: caafacff18db1504ca9f18f1dfe05380, type: 2}
+  hitRoarSound: {fileID: 123260, guid: a2290d46bf4432c458032a59867b7afe, type: 2}
+  stunRoarSound: {fileID: 142454, guid: d2fbdbcee79739749b0d23e9023a7a89, type: 2}
 --- !u!114 &11481068
 MonoBehaviour:
   m_ObjectHideFlags: 1
