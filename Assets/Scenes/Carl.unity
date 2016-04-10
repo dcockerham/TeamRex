@@ -425,7 +425,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11435606, guid: 3a406f6c641b4734aa5e4adec457fb28, type: 2}
       propertyPath: time
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 11435606, guid: 3a406f6c641b4734aa5e4adec457fb28, type: 2}
       propertyPath: itemDistance
@@ -433,7 +433,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11435606, guid: 3a406f6c641b4734aa5e4adec457fb28, type: 2}
       propertyPath: maxObjects
-      value: 300
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 11435606, guid: 3a406f6c641b4734aa5e4adec457fb28, type: 2}
       propertyPath: initalObjects
@@ -625,10 +625,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 11457650, guid: 58da76859004f374ba8dacdf3200717b, type: 2}
-      propertyPath: deathParticle
-      value: 
-      objectReference: {fileID: 112752, guid: 10c8b168e17d1cc478e420fab8dd3345, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 58da76859004f374ba8dacdf3200717b, type: 2}
   m_IsPrefabParent: 0
