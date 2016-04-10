@@ -40,6 +40,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lives: 3
+  baseScoreAsteroid: 100
   livesText: {fileID: 0}
   scoreText: {fileID: 0}
   restartText: {fileID: 0}

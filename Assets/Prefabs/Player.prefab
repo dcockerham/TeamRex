@@ -173,7 +173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 5
-  timeToShoot: 0.8
+  timeToShoot: 0.5
   projectile: {fileID: 101092, guid: 73ff5d3d5e63afd498682e5134e1394e, type: 2}
   lockOn: {fileID: 0}
   lastShootPos: {x: 0, y: 0, z: 0}

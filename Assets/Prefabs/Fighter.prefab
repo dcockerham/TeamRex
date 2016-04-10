@@ -103,6 +103,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1.5
+  Powerups:
+  - {fileID: 128648, guid: d98346f538147824bb6dd53d3e056bb0, type: 2}
+  - {fileID: 104766, guid: caafacff18db1504ca9f18f1dfe05380, type: 2}
 --- !u!212 &21210570
 SpriteRenderer:
   m_ObjectHideFlags: 1
