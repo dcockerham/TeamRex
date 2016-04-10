@@ -40,7 +40,7 @@ public class Asteroid_Movement : MonoBehaviour {
 
             newAsteroid = Instantiate (this.gameObject);
             newAsteroid.GetComponent<Asteroid_Movement>().size = size - 1;
-			newAsteroid.transform.localScale = newScale;
+            newAsteroid.transform.localScale = newScale;
 
             mainController.ScoreAsteroid(transform.localScale.x);
         }
