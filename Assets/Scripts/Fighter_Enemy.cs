@@ -8,6 +8,7 @@ public class Fighter_Enemy : MonoBehaviour {
 	private Rigidbody2D rigid;
 	public float speed = 1f;
     public List<GameObject> Powerups = new List<GameObject>();
+	public GameObject deathParticle;
 
 	// Use this for initialization
 	void Start () {
@@ -46,11 +47,10 @@ public class Fighter_Enemy : MonoBehaviour {
                 {
                     Powerup_spawn = 1;
                 }
-
                 Instantiate(Powerups[Powerup_spawn].gameObject, transform.position, Quaternion.identity);
-
             }
 
+			Instantiate(deathParticle, transform.position, transform.rotation);
 			Destroy(col.gameObject);
 			Destroy(gameObject);
 		}
