@@ -142,7 +142,7 @@ public class Player_Controller : MonoBehaviour {
         {
             if (col.gameObject.tag == "Asteroid")
             {
-                Vector2 itemToPut = new Vector2(1000, 1000);
+                Vector2 itemToPut = new Vector2(100000, 100000);
                 transform.position = itemToPut;
 
 
@@ -172,7 +172,7 @@ public class Player_Controller : MonoBehaviour {
     {
         yield return new WaitForSeconds(waitTime);
 
-        Vector2 itemToPut = new Vector2(100000, 100000);
+        Vector2 itemToPut;
         itemToPut = new Vector2(0, 0);
         transform.position = itemToPut;
         GetComponent<Rigidbody2D>().velocity = Vector3.zero;
