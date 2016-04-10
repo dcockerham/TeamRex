@@ -30,6 +30,7 @@ public class StareSelect : MonoBehaviour {
 			stareTime += Time.deltaTime;
 			if (stareTime >= 0.5f) {
 				button.onClick.Invoke ();
+				stareTime = 0f;
 			}
 		} else {
 			stareTime = 0f;

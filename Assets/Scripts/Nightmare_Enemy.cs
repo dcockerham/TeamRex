@@ -10,11 +10,12 @@ public class Nightmare_Enemy : MonoBehaviour {
 
 	private Quaternion baseRot;
 	public float rotateSpeed = -5f;
-
     public float speed = 2.5f;
     public Vector3 Direction;
 
     public List<GameObject> Powerups = new List<GameObject>();
+	public GameObject hitRoarSound;
+	public GameObject stunRoarSound;
 
     int life = 3;
 
@@ -38,6 +39,7 @@ public class Nightmare_Enemy : MonoBehaviour {
         {
             life--;
             Destroy(col.gameObject);
+			Instantiate (hitRoarSound);
 
 			if (life <= 0) {
 				float spawn_chance = Random.Range (-1f, 1f);
@@ -92,6 +94,7 @@ public class Nightmare_Enemy : MonoBehaviour {
 		transform.GetChild (0).gameObject.SetActive (true);
 		transform.GetChild (1).gameObject.SetActive (false);
 		transform.GetChild (2).gameObject.SetActive (false);
+		//Instantiate (stunRoarSound);
 		yield return new WaitForSeconds (num);
 		freezing = false;
 		transform.GetChild (0).gameObject.SetActive (false);

@@ -38,6 +38,10 @@ public class MenuController : MonoBehaviour {
 		Application.LoadLevel(1);
 	}
 
+	public void MouseStartButton() {
+		Application.LoadLevel(2);
+	}
+
 	public void LastResort() {
 		Application.Quit();
 	}
