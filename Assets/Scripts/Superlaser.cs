@@ -16,6 +16,10 @@ public class Superlaser : MonoBehaviour {
     private bool alive;
     private float spawn_time;
 
+	public float time = 10f;
+	public ParticleSystem parts;
+	public FadeObjectInOut fader;
+
     void Start()
     {
         Direction.x = Random.Range(-1f, 1f);
@@ -30,12 +34,13 @@ public class Superlaser : MonoBehaviour {
         alive = false;
         spawn_time = Random.Range(spawn_time_least, spawn_time_most);
 
+		parts = GetComponent<ParticleSystem> ();
+		fader = GetComponent<FadeObjectInOut> ();
     }
 
     void Update()
     {
-
-        transform.Translate(Direction * Time.deltaTime);
+		transform.Translate(Direction * Time.deltaTime);
 
         if (player == null)
         {
@@ -43,11 +48,21 @@ public class Superlaser : MonoBehaviour {
             return;
         }
 
-        if (GetComponent<GazeAwareComponent>().HasGaze)
+		if (GetComponent<GazeAwareComponent>().HasGaze && !player.freeze)
         {
             Direction = Vector3.zero;
             StartCoroutine(laser(laser_time));
         }
+
+		time -= Time.deltaTime;
+		if (time <= 0.5f) {
+			fader.FadeOut (0.5f);
+			parts.enableEmission = false;
+		}
+		if (time <= 0f)
+		{
+			Destroy(this.gameObject);
+		}
     }
 
     void OnMouseOver()

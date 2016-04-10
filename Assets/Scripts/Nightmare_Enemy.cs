@@ -78,7 +78,7 @@ public class Nightmare_Enemy : MonoBehaviour {
 			return;
 		}
 
-		if (!freezing && GetComponent<GazeAwareComponent> ().HasGaze) {
+		if (!freezing && !player.freeze && GetComponent<GazeAwareComponent> ().HasGaze) {
 			player.StartCoroutine (player.SetFreeze (freezeTime));
 			StartCoroutine (SetFreezing(freezeTime));
 		}
@@ -86,7 +86,7 @@ public class Nightmare_Enemy : MonoBehaviour {
 
 	void OnMouseOver()
 	{
-		if (!freezing && player.useMouse) {
+		if (!freezing && !player.freeze && player.useMouse) {
 			player.StartCoroutine (player.SetFreeze (freezeTime));
 			StartCoroutine (SetFreezing(freezeTime));
 		}

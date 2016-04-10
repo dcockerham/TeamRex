@@ -13,6 +13,7 @@ GameObject:
   - 114: {fileID: 11473366}
   - 198: {fileID: 19831192}
   - 199: {fileID: 19905816}
+  - 114: {fileID: 11428052}
   m_Layer: 0
   m_Name: InvincibilityPowerup
   m_TagString: Invincibility
@@ -46,6 +47,21 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.08
+--- !u!114 &11428052
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 104766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dfdda2474e5fd548b54344fa8382f40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeDelay: 0
+  fadeTime: 0.5
+  fadeInOnStart: 0
+  fadeOutOnStart: 0
 --- !u!114 &11473366
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -61,6 +77,7 @@ MonoBehaviour:
   Direction: {x: 0, y: 0, z: 0}
   time: 10
   rotateSpeed: 20
+  fader: {fileID: 0}
 --- !u!198 &19831192
 ParticleSystem:
   m_ObjectHideFlags: 1
