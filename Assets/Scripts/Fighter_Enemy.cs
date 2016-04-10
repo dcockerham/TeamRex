@@ -32,12 +32,24 @@ public class Fighter_Enemy : MonoBehaviour {
 
 		if (col.gameObject.tag == "Bullet")
 		{
-            //int spawn_chance = Random.Range(0, 1);
-            //if (spawn_chance == 1)
-            //{
-                int Powerup_spawn = Random.Range(0, 1);
-                Instantiate(Powerups[Powerup_spawn].gameObject);
-            //}
+            float spawn_chance = Random.Range(-1f, 1f);
+            if (spawn_chance > 0)
+            {
+                spawn_chance = Random.Range(-1f, 1f);
+
+                int Powerup_spawn;
+                if (spawn_chance < 0)
+                {
+                    Powerup_spawn = 0;
+                }
+                else
+                {
+                    Powerup_spawn = 1;
+                }
+
+                Instantiate(Powerups[Powerup_spawn].gameObject, transform.position, Quaternion.identity);
+
+            }
 
 			Destroy(col.gameObject);
 			Destroy(gameObject);
