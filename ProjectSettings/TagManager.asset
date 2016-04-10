@@ -8,6 +8,7 @@ TagManager:
   - Asteroid
   - IncreaseFireRate
   - Invincibility
+  - Wall
   layers:
   - Default
   - TransparentFX

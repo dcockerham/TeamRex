@@ -14,6 +14,10 @@ public class boundary_bottom : MonoBehaviour {
 
     void OnTriggerStay2D(Collider2D other)
     {
+        if (other.gameObject.CompareTag("Wall"))
+        {
+            return;
+        }
         other.gameObject.transform.position -= new Vector3(0f, (float)(2 * other.gameObject.transform.position.y + 1.5), 0f);
     }
 }
