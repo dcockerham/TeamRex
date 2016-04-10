@@ -35,7 +35,7 @@ public class ItemSpawner : MonoBehaviour {
             asteroidNumber = 0;
             for (int x = 0; x < currentObjects.Length; x++)
             {
-                asteroidNumber += currentObjects[x].GetComponent<Asteroid_Movement>().size;
+				asteroidNumber += currentObjects[x].GetComponent<Asteroid_Movement>().size;
             }
 
             if ((asteroidNumber + 4) <= maxObjects)
@@ -76,7 +76,7 @@ public class ItemSpawner : MonoBehaviour {
             RandomHeight = Random.Range((adjustment + height / 2), (height / 2 + border));
 
         //Debug.Log(RandomWidth);
-        Debug.Log(RandomHeight);
+        //Debug.Log(RandomHeight);
 
         Vector2 itemToPut = new Vector2(RandomWidth, RandomHeight);
 

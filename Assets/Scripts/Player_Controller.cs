@@ -152,7 +152,7 @@ public class Player_Controller : MonoBehaviour {
 	{
         if (Powerups["Invincibility"] == false)
         {
-            if (col.gameObject.tag == "Asteroid")
+			if (col.gameObject.tag == "Asteroid" || col.gameObject.tag == "Enemy")
             {
                 mainController.Death();
                 Instantiate(deathParticle, transform.position, transform.rotation);

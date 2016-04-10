@@ -9,6 +9,7 @@ TagManager:
   - IncreaseFireRate
   - Invincibility
   - Wall
+  - Enemy
   layers:
   - Default
   - TransparentFX
