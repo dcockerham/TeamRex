@@ -66,7 +66,7 @@ public class Asteroid_Movement : MonoBehaviour {
 
         }
         Instantiate(destroyParticle, transform.position, transform.rotation);
-        //Instantiate (breakSound);
+        Instantiate (breakSound);
         mainController.ScoreAsteroid(size);
 
         Destroy(gameObject);

@@ -98,7 +98,7 @@ public class Nightmare_Enemy : MonoBehaviour {
 		transform.GetChild (0).gameObject.SetActive (true);
 		transform.GetChild (1).gameObject.SetActive (false);
 		transform.GetChild (2).gameObject.SetActive (false);
-		//Instantiate (stunRoarSound);
+		Instantiate (stunRoarSound);
 		yield return new WaitForSeconds (num);
 		freezing = false;
 		transform.GetChild (0).gameObject.SetActive (false);

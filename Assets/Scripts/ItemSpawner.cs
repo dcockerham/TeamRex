@@ -18,9 +18,14 @@ public class ItemSpawner : MonoBehaviour {
     public float nightmarePercentage;
     public int nightmareScore;
 
+    public float laserPowerUpTime;
+    public float laserPowerUpPercentage;
+    public int laserPowerUpScore;
+
     private float asteroidtimer = 0f;
     private float fightertimer = 0f;
     private float nightmaretimer = 0f;
+    private float laserPowerUpTimer = 0f;
 
     private int asteroidNumber;
 
@@ -47,9 +52,38 @@ public class ItemSpawner : MonoBehaviour {
         InstantiateAsteroid();
         InstantiateFighter();
         InstantiateNightmare();
-
+        InstantiateLaserPowerUp();
     }
 
+    void InstantiateLaserPowerUp()
+    {
+        laserPowerUpTimer += Time.deltaTime;
+        currentObjects = GameObject.FindGameObjectsWithTag("Nightmare");
+        //Debug.Log("laserPowerUpTimer");
+        //Debug.Log(laserPowerUpTimer);
+        //Debug.Log(laserPowerUpTime);
+        if (laserPowerUpTimer > laserPowerUpTime)
+        {
+            laserPowerUpTimer = 0f;
+            float random = Random.value;
+            //Debug.Log("percentage");
+            //Debug.Log(random);
+            //Debug.Log((laserPowerUpPercentage / 100));
+            //Debug.Log(random < (laserPowerUpPercentage / 100));
+            if (random < (laserPowerUpPercentage / 100))
+            {
+                //Debug.Log("TRUE");
+                if (mainController.score > laserPowerUpScore)
+                {
+                    Vector2 itemToPut = new Vector2(Random.Range(-width / 2, width / 2), Random.Range(-height / 2, height / 2));
+                    GameObject g = (GameObject)Instantiate(itemlist[3], itemToPut, itemlist[3].transform.rotation);
+                    
+                }
+            }
+
+        }
+
+    }
     void InstantiateNightmare()
     {
         nightmaretimer += Time.deltaTime;
@@ -58,14 +92,16 @@ public class ItemSpawner : MonoBehaviour {
 
         if (nightmaretimer > nightmareTime)
         {
+            nightmaretimer = 0f;
+
             if (Random.value < nightmarePercentage / 100)
             {
                 if (mainController.score / nightmareScore > currentObjects.Length)
                 {
                     if (InstantiateObject(2))
                     {
-                        nightmaretimer = 0f;
                     }
+
                 }
             }
         }
@@ -79,14 +115,16 @@ public class ItemSpawner : MonoBehaviour {
 
         if (fightertimer > fighterTime)
         {
+            fightertimer = 0f;
+
             if (Random.value < fighterPercentage / 100)
             {
                 if (mainController.score / fighterScore > currentObjects.Length)
                 {
                     if (InstantiateObject(1))
                     {
-                        fightertimer = 0f;
                     }
+
                 }
             }
         }

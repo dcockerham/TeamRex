@@ -13,6 +13,7 @@ GameObject:
   - 114: {fileID: 11468702}
   - 199: {fileID: 19929934}
   - 198: {fileID: 19830716}
+  - 114: {fileID: 11473524}
   m_Layer: 0
   m_Name: FireRatePowerup
   m_TagString: IncreaseFireRate
@@ -61,6 +62,23 @@ MonoBehaviour:
   Direction: {x: 0, y: 0, z: 0}
   time: 10
   rotateSpeed: 20
+  parts: {fileID: 0}
+  fader: {fileID: 0}
+--- !u!114 &11473524
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 128648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dfdda2474e5fd548b54344fa8382f40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeDelay: 0
+  fadeTime: 0.5
+  fadeInOnStart: 0
+  fadeOutOnStart: 0
 --- !u!198 &19830716
 ParticleSystem:
   m_ObjectHideFlags: 1

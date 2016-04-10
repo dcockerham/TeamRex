@@ -284,7 +284,11 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+<<<<<<< HEAD
   m_RootOrder: 3
+=======
+  m_RootOrder: 0
+>>>>>>> origin/master
 --- !u!114 &478732742 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11472040, guid: d59a7d1242b5e544eb5dacb1066120d5,
@@ -507,7 +511,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 483358, guid: 3a406f6c641b4734aa5e4adec457fb28, type: 2}
       propertyPath: m_RootOrder
+<<<<<<< HEAD
       value: 8
+=======
+      value: 6
+>>>>>>> origin/master
       objectReference: {fileID: 0}
     - target: {fileID: 11435606, guid: 3a406f6c641b4734aa5e4adec457fb28, type: 2}
       propertyPath: border
@@ -589,7 +597,11 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+<<<<<<< HEAD
   m_RootOrder: 4
+=======
+  m_RootOrder: 1
+>>>>>>> origin/master
 --- !u!114 &1206786467 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11461964, guid: d59a7d1242b5e544eb5dacb1066120d5,
@@ -702,6 +714,7 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0.2}
   serializedVersion: 2
   m_Size: {x: 1, y: 0.4}
+<<<<<<< HEAD
 --- !u!1001 &1804724886
 Prefab:
   m_ObjectHideFlags: 0
@@ -794,3 +807,5 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: caafacff18db1504ca9f18f1dfe05380, type: 2}
   m_IsPrefabParent: 0
+=======
+>>>>>>> origin/master
