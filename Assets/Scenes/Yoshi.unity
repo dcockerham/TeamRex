@@ -617,6 +617,61 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1227102093}
   m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+--- !u!1001 &1833198359
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 11404670, guid: 9cf1d433fc45a1d49bb1a0b7fdae0ab1, type: 2}
+      propertyPath: Powerups.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 403644, guid: 9cf1d433fc45a1d49bb1a0b7fdae0ab1, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 6.59
+      objectReference: {fileID: 0}
+    - target: {fileID: 403644, guid: 9cf1d433fc45a1d49bb1a0b7fdae0ab1, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -2.54
+      objectReference: {fileID: 0}
+    - target: {fileID: 403644, guid: 9cf1d433fc45a1d49bb1a0b7fdae0ab1, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 403644, guid: 9cf1d433fc45a1d49bb1a0b7fdae0ab1, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 403644, guid: 9cf1d433fc45a1d49bb1a0b7fdae0ab1, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 403644, guid: 9cf1d433fc45a1d49bb1a0b7fdae0ab1, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 403644, guid: 9cf1d433fc45a1d49bb1a0b7fdae0ab1, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 403644, guid: 9cf1d433fc45a1d49bb1a0b7fdae0ab1, type: 2}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 11404670, guid: 9cf1d433fc45a1d49bb1a0b7fdae0ab1, type: 2}
+      propertyPath: Powerups.Array.data[0]
+      value: 
+      objectReference: {fileID: 128648, guid: d98346f538147824bb6dd53d3e056bb0, type: 2}
+    - target: {fileID: 11404670, guid: 9cf1d433fc45a1d49bb1a0b7fdae0ab1, type: 2}
+      propertyPath: Powerups.Array.data[1]
+      value: 
+      objectReference: {fileID: 104766, guid: caafacff18db1504ca9f18f1dfe05380, type: 2}
+    m_RemovedComponents:
+    - {fileID: 11419586, guid: 9cf1d433fc45a1d49bb1a0b7fdae0ab1, type: 2}
+  m_ParentPrefab: {fileID: 100100000, guid: 9cf1d433fc45a1d49bb1a0b7fdae0ab1, type: 2}
+  m_IsPrefabParent: 0
 --- !u!114 &2008351188 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11461964, guid: d59a7d1242b5e544eb5dacb1066120d5,
