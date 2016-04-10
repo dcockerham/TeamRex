@@ -16,14 +16,18 @@ public class Player_Controller : MonoBehaviour {
     public Rigidbody2D rb;
     public int force = 10;
 
+    private MainController mainController;
 
-	Dictionary<string, bool> Powerups = new Dictionary<string, bool>();
+    Dictionary<string, bool> Powerups = new Dictionary<string, bool>();
 	Dictionary<string, float> PowerupTimes = new Dictionary<string, float>();
 	Dictionary<string, float> PowerupMaxTimes = new Dictionary<string, float>();
 
 	// Use this for initialization
 	void Start () {
-		timer = timeToShoot;
+        GameObject gameControllerObject = GameObject.FindGameObjectWithTag("GameController");
+        mainController = gameControllerObject.GetComponent<MainController>();
+
+        timer = timeToShoot;
 		lastShootPos = Vector3.up;
 		freeze = false;
 		lockOn = GameObject.Find("LockOn");
@@ -138,7 +142,13 @@ public class Player_Controller : MonoBehaviour {
         {
             if (col.gameObject.tag == "Asteroid")
             {
-                Destroy(this.gameObject);
+                Vector2 itemToPut = new Vector2(100000, 100000);
+                transform.position = itemToPut;
+
+
+                StartCoroutine(waitFunction(3f));
+
+          
             }
         }
 
@@ -158,4 +168,15 @@ public class Player_Controller : MonoBehaviour {
 		freeze = false;
 		transform.GetChild (0).gameObject.SetActive (false);
 	}
+    public IEnumerator waitFunction(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+
+        Vector2 itemToPut;
+        itemToPut = new Vector2(0, 0);
+        transform.position = itemToPut;
+        GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+        mainController.Death();
+    }
+
 }
