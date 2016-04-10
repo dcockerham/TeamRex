@@ -10,9 +10,14 @@ public class Fighter_Enemy : MonoBehaviour {
     public List<GameObject> Powerups = new List<GameObject>();
 	public GameObject deathParticle;
 
-	// Use this for initialization
-	void Start () {
-		player = GameObject.Find("Player").GetComponent<Player_Controller>();
+    private MainController mainController;
+
+    // Use this for initialization
+    void Start () {
+        GameObject gameControllerObject = GameObject.FindGameObjectWithTag("GameController");
+        mainController = gameControllerObject.GetComponent<MainController>();
+
+        player = GameObject.Find("Player").GetComponent<Player_Controller>();
 		rigid = gameObject.GetComponent<Rigidbody2D> ();
 	}
 	
@@ -50,7 +55,9 @@ public class Fighter_Enemy : MonoBehaviour {
                 Instantiate(Powerups[Powerup_spawn].gameObject, transform.position, Quaternion.identity);
             }
 
-			Instantiate(deathParticle, transform.position, transform.rotation);
+            mainController.AddScore(250);
+
+            Instantiate(deathParticle, transform.position, transform.rotation);
 			Destroy(col.gameObject);
 			Destroy(gameObject);
 		}

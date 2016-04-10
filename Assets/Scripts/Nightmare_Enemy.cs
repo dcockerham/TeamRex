@@ -16,10 +16,14 @@ public class Nightmare_Enemy : MonoBehaviour {
 
     public List<GameObject> Powerups = new List<GameObject>();
 
+    private MainController mainController;
+
     int life = 3;
 
     // Use this for initialization
     void Start () {
+        GameObject gameControllerObject = GameObject.FindGameObjectWithTag("GameController");
+        mainController = gameControllerObject.GetComponent<MainController>();
 
         Direction.x = Random.Range(-1f, 1f);
         Direction.y = Random.Range(-1f, 1f);
@@ -116,7 +120,9 @@ public class Nightmare_Enemy : MonoBehaviour {
 		GetComponent<SpriteRenderer> ().enabled = false;
 		//transform.GetChild (6).gameObject.SetActive (false);
 		transform.GetChild (5).gameObject.SetActive (true);
-		yield return new WaitForSeconds (num);
-		Destroy (gameObject);
+        mainController.AddScore(500);
+
+        yield return new WaitForSeconds (num);
+        Destroy (gameObject);
 	}
 }
