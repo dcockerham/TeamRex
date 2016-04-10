@@ -26,7 +26,7 @@ public class Asteroid_Movement : MonoBehaviour {
 
     void DestroyAsteroid()
     {
-		if (size > 1) {
+		if (size > 3) {
 			Vector3 newScale = new Vector3 (transform.localScale.x*sizeMod, transform.localScale.y*sizeMod, transform.localScale.z);
 			GameObject newAsteroid = Instantiate (this.gameObject);
 			newAsteroid.transform.localScale = newScale;
