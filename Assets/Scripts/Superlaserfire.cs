@@ -24,7 +24,6 @@ public class Superlaserfire : MonoBehaviour {
         float y1 = playerpos.y;
         float y2 = initialpos.y;
         float dist = Mathf.Sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
-        print(dist);
         transform.localScale = new Vector3(dist/2f, 1f, 1f);
     }
 	
@@ -46,25 +45,26 @@ public class Superlaserfire : MonoBehaviour {
         float y1 = playerpos.y;
         float y2 = initialpos.y;
         float dist = Mathf.Sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
-        print(dist);
         transform.localScale = new Vector3(dist / 2f, 1f, 1f);
     }
 
-    void ONCollisionEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Asteroid"))
         {
             Asteroid_Movement script = other.GetComponent<Asteroid_Movement>();
             script.DestroyAsteroid();
+            print("hi");
         }
     }
 
-    void ONCollisionStay2D(Collider2D other)
+    private void OnTriggerStay2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Asteroid"))
         {
             Asteroid_Movement script = other.GetComponent<Asteroid_Movement>();
             script.DestroyAsteroid();
+            print("hi");
         }
     }
 }

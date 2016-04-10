@@ -3,9 +3,9 @@ using System.Collections;
 
 public class Superlaser : MonoBehaviour {
     Player_Controller player;
-    MainController control;
+    //MainController control;
     public float laser_time;
-    public float Hit_speed;
+    //public float Hit_speed;
     public float spawn_time_least;
     public float spawn_time_most;
     public float speed = 0.5f;
@@ -25,7 +25,7 @@ public class Superlaser : MonoBehaviour {
         Direction.y *= speed;
 
         player = GameObject.Find("Player").GetComponent<Player_Controller>();
-        control = GameObject.Find("GameController").GetComponent<MainController>();
+        //control = GameObject.Find("GameController").GetComponent<MainController>();
         on = false;
         alive = false;
         spawn_time = Random.Range(spawn_time_least, spawn_time_most);
@@ -45,6 +45,7 @@ public class Superlaser : MonoBehaviour {
 
         if (GetComponent<GazeAwareComponent>().HasGaze)
         {
+            Direction = Vector3.zero;
             StartCoroutine(laser(laser_time));
         }
     }
