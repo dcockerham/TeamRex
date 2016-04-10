@@ -24,7 +24,6 @@ public class Fighter_Enemy : MonoBehaviour {
 			transform.up = -direction;
 
 			Vector2 newVel = rigid.velocity - new Vector2 (transform.up.x, transform.up.y);
-			print(newVel);
 			rigid.velocity = newVel.normalized * speed;
 		}
 	}

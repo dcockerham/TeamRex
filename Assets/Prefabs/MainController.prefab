@@ -11,7 +11,7 @@ GameObject:
   - 114: {fileID: 11462182}
   m_Layer: 0
   m_Name: MainController
-  m_TagString: Untagged
+  m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -40,6 +40,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lives: 3
+  baseScoreAsteroid: 100
   livesText: {fileID: 0}
   scoreText: {fileID: 0}
   restartText: {fileID: 0}

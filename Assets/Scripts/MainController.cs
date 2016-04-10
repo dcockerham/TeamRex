@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class MainController : MonoBehaviour {
     public int lives;
+    public float baseScoreAsteroid;
 
     public Text livesText;
     public Text scoreText;
@@ -21,10 +22,7 @@ public class MainController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-        
         GameOver();
-   
     }
 
     private void GameOver()
@@ -62,16 +60,23 @@ public class MainController : MonoBehaviour {
         SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
     }
 
+    public void Death()
+    {
+        lives--;
+        UpdateLives();
+    }
+
     public void AddScore(int newScoreValue)
     {
         score += newScoreValue;
         UpdateScore();
     }
 
-    public void Death()
+    public void ScoreAsteroid(float size)
     {
-        lives--;
-        UpdateLives();
+
+        AddScore((int) (baseScoreAsteroid * size));
     }
+
 
 }
