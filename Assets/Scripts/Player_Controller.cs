@@ -145,10 +145,7 @@ public class Player_Controller : MonoBehaviour {
                 Vector2 itemToPut = new Vector2(100000, 100000);
                 transform.position = itemToPut;
 
-
                 StartCoroutine(waitFunction(3f));
-
-          
             }
         }
 
@@ -168,6 +165,7 @@ public class Player_Controller : MonoBehaviour {
 		freeze = false;
 		transform.GetChild (0).gameObject.SetActive (false);
 	}
+
     public IEnumerator waitFunction(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
@@ -177,6 +175,9 @@ public class Player_Controller : MonoBehaviour {
         transform.position = itemToPut;
         GetComponent<Rigidbody2D>().velocity = Vector3.zero;
         mainController.Death();
+
+		Powerups["Invincibility"] = true;
+		PowerupTimes["Invincibility"] = 3.0f;
     }
 
 }
