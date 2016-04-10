@@ -86,6 +86,11 @@ public class Player_Controller : MonoBehaviour {
 			transform.GetChild (2).gameObject.SetActive (true);
 			transform.GetChild (1).gameObject.SetActive (false);
 		}
+		if (!Powerups["IncreaseFireRate"]) {
+			transform.GetChild (3).gameObject.SetActive (false);
+		} else {
+			transform.GetChild (3).gameObject.SetActive (true);
+		}
 
 		if (!freeze) {
 			// get the target screen position
@@ -133,6 +138,11 @@ public class Player_Controller : MonoBehaviour {
 				GameObject go = (GameObject)Instantiate (projectile, transform.position, q);
 				Rigidbody2D bulletRb = go.GetComponent<Rigidbody2D> ();
 				bulletRb.AddForce (go.transform.up * bulletForce);
+
+				AudioSource audio = GetComponent<AudioSource> ();
+				if (audio != null) {
+					audio.Play();
+				}
 			}
 		}
 	}
@@ -169,15 +179,22 @@ public class Player_Controller : MonoBehaviour {
 		freeze = false;
 		transform.GetChild (0).gameObject.SetActive (false);
 	}
+
     public IEnumerator waitFunction(float waitTime)
     {
-        yield return new WaitForSeconds(waitTime);
+		Powerups["Invincibility"] = false;
+		Powerups["IncreaseFireRate"] = false;
+		freeze = true;
+		yield return new WaitForSeconds(waitTime);
+		freeze = false;
 
         Vector2 itemToPut;
         itemToPut = new Vector2(0, 0);
         transform.position = itemToPut;
         GetComponent<Rigidbody2D>().velocity = Vector3.zero;
-        
+
+		Powerups["Invincibility"] = true;
+		PowerupTimes["Invincibility"] = 3.0f;
     }
 
 }
