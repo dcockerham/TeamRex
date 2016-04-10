@@ -84,6 +84,11 @@ public class Player_Controller : MonoBehaviour {
 			transform.GetChild (2).gameObject.SetActive (true);
 			transform.GetChild (1).gameObject.SetActive (false);
 		}
+		if (!Powerups ["IncreaseFireRate"]) {
+			transform.GetChild (3).gameObject.SetActive (false);
+		} else {
+			transform.GetChild (3).gameObject.SetActive (true);
+		}
 
 		if (!freeze) {
 			// get the target screen position
@@ -171,6 +176,8 @@ public class Player_Controller : MonoBehaviour {
     public IEnumerator waitFunction(float waitTime)
     {
 		freeze = true;
+		Powerups["Invincibility"] = false;
+		Powerups["IncreaseFireRate"] = false;
 		yield return new WaitForSeconds(waitTime);
 		freeze = false;
 
