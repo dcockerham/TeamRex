@@ -156,6 +156,7 @@ public class Player_Controller : MonoBehaviour {
             {
                 mainController.Death();
                 Instantiate(deathParticle, transform.position, transform.rotation);
+                GetComponent<TrailRenderer>().enabled = false;
 
                 GetComponent<Rigidbody2D>().isKinematic = true;
                 GetComponent<Collider2D>().enabled = false;
@@ -199,8 +200,9 @@ public class Player_Controller : MonoBehaviour {
         GetComponent<Rigidbody2D>().velocity = Vector3.zero;
         GetComponent<Rigidbody2D>().isKinematic = false;
 		GetComponent<Collider2D>().enabled = true;
+        GetComponent<TrailRenderer>().enabled = true;
 
-		Powerups["Invincibility"] = true;
+        Powerups["Invincibility"] = true;
 		PowerupTimes["Invincibility"] = 3.0f;
     }
 
