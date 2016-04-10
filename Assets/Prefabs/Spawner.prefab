@@ -41,12 +41,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemlist:
   - {fileID: 198868, guid: 309778776e255f24686344e42d569354, type: 2}
-  maxObjects: 20
+  - {fileID: 142538, guid: b9eca0581428dc7418d6261bf6d7ff97, type: 2}
+  - {fileID: 161792, guid: 9cf1d433fc45a1d49bb1a0b7fdae0ab1, type: 2}
+  maxObjects: 30
   initalObjects: 3
-  time: 1
-  itemDistance: 2
-  tagObject: Asteroid
-  border: 0.2
+  border: 1
+  asteroidTime: 3
+  fighterTime: 5
+  fighterPercentage: 30
+  fighterScore: 5000
+  nightmareTime: 5
+  nightmarePercentage: 10
+  nightmareScore: 7000
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

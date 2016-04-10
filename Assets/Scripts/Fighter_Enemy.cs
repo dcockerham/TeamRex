@@ -6,7 +6,7 @@ public class Fighter_Enemy : MonoBehaviour {
 
 	private Player_Controller player;
 	private Rigidbody2D rigid;
-	public float speed = 1f;
+	public float speed = 2f;
     public List<GameObject> Powerups = new List<GameObject>();
 	public GameObject deathParticle;
 
