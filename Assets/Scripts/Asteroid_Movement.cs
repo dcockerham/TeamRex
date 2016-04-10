@@ -43,11 +43,11 @@ public class Asteroid_Movement : MonoBehaviour {
             newAsteroid.GetComponent<Asteroid_Movement>().size = size - 1;
             newAsteroid.transform.localScale = newScale;
 
-            mainController.ScoreAsteroid(transform.localScale.x);
         }
 
         Instantiate(destroyParticle, transform.position, transform.rotation);
         //Instantiate (breakSound);
+        mainController.ScoreAsteroid(size);
 
         Destroy(gameObject);
     }

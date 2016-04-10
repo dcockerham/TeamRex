@@ -7,59 +7,84 @@ public class ItemSpawner : MonoBehaviour {
     public List<GameObject> itemlist = new List<GameObject>();
     public int maxObjects = 18;
     public int initalObjects;
-    public float time;
+    public float asteroidTime;
+    public float fighterTime;
     public float itemDistance;
     public string tagObject = "Asteroid";
     public float border;
 
-    private float timer = 0f;
+    private float asteroidtimer = 0f;
+    private float fightertimer = 0f;
+
+    private int asteroidNumber;
+    private float fighterNumber = 0f;
+
     private float width;
     private float height;
     private GameObject[] currentObjects;
-    private int asteroidNumber;
+
+    
 
     // Use this for initialization
     void Start () {
         height = 2.0f * Camera.main.orthographicSize;
         width = height * Camera.main.aspect;
-        InstantiateMultipleObjects(initalObjects);
+        InstantiateMultipleObjects(initalObjects, 0);
     }
 	
 	// Update is called once per frame
 	void Update () {
-        timer += Time.deltaTime;
-        currentObjects = GameObject.FindGameObjectsWithTag(tagObject);
+        InstantiateAsteroid();
+        InstantiateFighter();
 
-        if (timer > time)
+
+    }
+
+    void InstantiateFighter()
+    {
+        fightertimer += Time.deltaTime;
+
+        //if (asteroidtimer > asteroidTime)
+
+    }
+
+    void InstantiateAsteroid()
+    {
+        asteroidtimer += Time.deltaTime;
+        currentObjects = GameObject.FindGameObjectsWithTag("Asteroid");
+
+
+        if (asteroidtimer > asteroidTime)
         {
             asteroidNumber = 0;
             for (int x = 0; x < currentObjects.Length; x++)
             {
-				asteroidNumber += currentObjects[x].GetComponent<Asteroid_Movement>().size;
+                asteroidNumber += currentObjects[x].GetComponent<Asteroid_Movement>().size;
             }
 
             if ((asteroidNumber + 4) <= maxObjects)
             {
-                if (InstantiateObject())
+                if (InstantiateObject(0))
                 {
-                    timer = 0f;
+                    asteroidtimer = 0f;
                 }
             }
         }
     }
 
-    void InstantiateMultipleObjects(int numberToCreate){
+    void InstantiateMultipleObjects(int numberToCreate, int enemieType)
+    {
         //
         for (int x = 0; x < numberToCreate; x++)
         {
-            while (!InstantiateObject())
+            while (!InstantiateObject(enemieType))
             {
                 continue;
             }
         }
     }
 
-    bool InstantiateObject(){
+    bool InstantiateObject(int enemieType){
         //Returns true if it was able to instantiate an object, otherwise false.
         float RandomWidth = 0;
         float RandomHeight = 0;
@@ -82,7 +107,7 @@ public class ItemSpawner : MonoBehaviour {
 
         //if (!(Physics.CheckSphere(itemToPut, itemDistance)))
         //{
-            GameObject g = (GameObject)Instantiate(itemlist[Random.Range(0, itemlist.Count)], itemToPut, itemlist[0].transform.rotation);
+            GameObject g = (GameObject)Instantiate(itemlist[enemieType], itemToPut, itemlist[0].transform.rotation);
             return true;
         //}
         //return false;
