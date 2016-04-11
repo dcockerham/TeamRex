@@ -35,6 +35,7 @@ public class MainController : MonoBehaviour {
 
             gameOverText.text = "GameOver!";
             restartText.text = "Press 'R' for Restart\nPress 'Q' for Quit";
+
             if (Input.GetKeyDown(KeyCode.R))
             {
                 ReloadCurrentScene();
@@ -82,13 +83,5 @@ public class MainController : MonoBehaviour {
 
         AddScore((int) (baseScoreAsteroid * size));
     }
-
-    /*
-    public IEnumerator laserspawn(float time, GameObject gem)
-    {
-        yield return new WaitForSeconds(time);
-        gem.SetActive(true);
-    }
-    */
 
 }

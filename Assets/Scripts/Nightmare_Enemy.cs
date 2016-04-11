@@ -74,7 +74,6 @@ public class Nightmare_Enemy : MonoBehaviour {
 		transform.Rotate (0,0,rotateSpeed*Time.deltaTime);
 
         if (player == null) {
-			print ("NO PLAYER ARGH!");
 			return;
 		}
 
