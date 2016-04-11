@@ -39,11 +39,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ccfbd0116178e04b8962ca0cc5acc5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemlist:
-  - {fileID: 198868, guid: 309778776e255f24686344e42d569354, type: 2}
-  - {fileID: 142538, guid: b9eca0581428dc7418d6261bf6d7ff97, type: 2}
-  - {fileID: 161792, guid: 9cf1d433fc45a1d49bb1a0b7fdae0ab1, type: 2}
-  - {fileID: 196170, guid: fdc2e6cc7ed266241848120174e99201, type: 2}
+  EnemyList:
+    asteroid: {fileID: 198868, guid: 309778776e255f24686344e42d569354, type: 2}
+    fighter: {fileID: 142538, guid: b9eca0581428dc7418d6261bf6d7ff97, type: 2}
+    nightmare: {fileID: 161792, guid: 9cf1d433fc45a1d49bb1a0b7fdae0ab1, type: 2}
+    laserPowerUp: {fileID: 196170, guid: fdc2e6cc7ed266241848120174e99201, type: 2}
   asteroidTime: 3
   asteroidMaxNumber: 30
   asteroidInitalSpawn: 3

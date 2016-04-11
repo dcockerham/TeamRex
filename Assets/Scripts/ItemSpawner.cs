@@ -3,7 +3,7 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class ItemSpawner : MonoBehaviour {
-    public List<GameObject> itemlist = new List<GameObject>();
+    public EnemyListClass EnemyList;
 
     public float asteroidTime;
     public int asteroidMaxNumber;
@@ -34,7 +34,7 @@ public class ItemSpawner : MonoBehaviour {
         height = 2.0f * Camera.main.orthographicSize;
         width = height * Camera.main.aspect;
 
-        InstantiateMultipleObjects(asteroidInitalSpawn, 0);
+        InstantiateMultipleObjects(asteroidInitalSpawn, EnemyList.asteroid);
 
         InvokeRepeating("SpawnAsteroid", asteroidTime, asteroidTime);
         InvokeRepeating("SpawnFighter", fighterTime, fighterTime);
@@ -65,11 +65,11 @@ public class ItemSpawner : MonoBehaviour {
         return new Vector2(Random.Range(-width / 2, width / 2), Random.Range(-height / 2, height / 2));
     }
 
-    void InstantiateObject(int enemieType){
-        Instantiate(itemlist[enemieType], GenerateRandomPositionOutsideBoundary(), itemlist[0].transform.rotation);
+    void InstantiateObject(GameObject enemieType){
+        Instantiate(enemieType, GenerateRandomPositionOutsideBoundary(), enemieType.transform.rotation);
     }
 
-    void InstantiateMultipleObjects(int numberToCreate, int enemieType){
+    void InstantiateMultipleObjects(int numberToCreate, GameObject enemieType){
         for (int x = 0; x < numberToCreate; x++)
             InstantiateObject(enemieType);
     }
@@ -82,25 +82,34 @@ public class ItemSpawner : MonoBehaviour {
             asteroidCurrentNumber += currentObjects[x].GetComponent<Asteroid_Movement>().size;
 
         if ((asteroidCurrentNumber + 4) <= asteroidMaxNumber)
-            InstantiateObject(0);
+            InstantiateObject(EnemyList.asteroid);
     }
 
     void SpawnFighter(){
         currentObjects = GameObject.FindGameObjectsWithTag("Fighter");
 
         if ((gameController.score / fighterScore) > currentObjects.Length && Random.value < fighterPercentage / 100)
-            InstantiateObject(1);
+            InstantiateObject(EnemyList.fighter);
     }
 
     void SpawnNightmare(){
         currentObjects = GameObject.FindGameObjectsWithTag("Nightmare");
         if (gameController.score / nightmareScore > currentObjects.Length && Random.value < nightmarePercentage / 100)
-            InstantiateObject(2);
+            InstantiateObject(EnemyList.nightmare);
     }
 
     void SpawnLaserPowerUp(){
         if (gameController.score > laserPowerUpScore && Random.value < (laserPowerUpPercentage / 100))
-            Instantiate(itemlist[3], GenerateRandomPositionInsideBoundary(), itemlist[3].transform.rotation);
+            Instantiate(EnemyList.laserPowerUp, GenerateRandomPositionInsideBoundary(), EnemyList.laserPowerUp.transform.rotation);
     }
 
+}
+
+[System.Serializable]
+public class EnemyListClass
+{
+    public GameObject asteroid;
+    public GameObject fighter;
+    public GameObject nightmare;
+    public GameObject laserPowerUp;
 }
